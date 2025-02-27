@@ -6,7 +6,7 @@
   }
 
   html {
-    --default-width: clamp(350px, 70vw, 500px);
+    --default-width: clamp(350px, 60vw, 700px);
     --spacing: 5px;
     --hue: 266;
     --color: oklch(0.56 0.19 var(--hue));
