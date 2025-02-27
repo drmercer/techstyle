@@ -1,0 +1,95 @@
+* {
+  accent-color: var(--color, initial);
+}
+
+button {
+  appearance: none;
+  background: none;
+  color: inherit;
+  border: 2px solid currentColor;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+html {
+  --hue: 266;
+  --color: oklch(0.56 0.19 var(--hue));
+  --bg-color: white;
+  color: var(--color, black);
+  background-color: var(--bg-color, white);
+  font-family: system-ui, sans-serif;
+
+  &.t-dark {
+    --color: oklch(0.8 0.19 var(--hue));
+    --bg-color: #222;
+    color-scheme: dark;
+  }
+
+  &.t-swapped {
+    --color: black;
+    --bg-color: oklch(0.8 0.19 var(--hue));
+  }
+
+  &.t-swapped.t-dark {
+    --color: white;
+    --bg-color: oklch(0.45 0.19 var(--hue));
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+header,
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+
+  /* center an only child */
+  /* (:only-child wouldn't work with only text) */
+  &:not(:has(> :nth-child(2))) {
+    justify-content: center;
+  }
+}
+footer {
+  /* works with sticky */
+  top: 100vh;
+  top: 100svh;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+}
+
+iframe {
+  border: none;
+  width: 100%;
+}
+
+.t-card {
+  display: block;
+  margin-block: 20px;
+  border: 2px solid currentColor;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+  &[title] {
+    padding-top: calc(5px + 0.5em);
+  }
+  &[title]::before {
+    position: absolute;
+    top: -0.5em;
+    content: attr(title);
+    background: var(--bg-color, white);
+    padding-inline: 2px;
+  }
+}

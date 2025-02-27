@@ -1,13 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>techstyle</title>
-  <meta name="description" content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
+  <meta name="description"
+    content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
   <meta name="author" content="Dan Mercer">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  TODO
+  <header>
+    <a href="https://danmercer.net">Home</a>
+    <h1>techstyle</h1>
+    <button>more</button>
+  </header>
+  
+  <main>
+    <button>Foo</button>
+    <button>Bar</button>
+  
+    <div class="t-card" title="A card containing a cool website">
+      <iframe title="My Iframe" src="https://danmercer.net"></iframe>
+    </div>
+  </main>
+  
+  <form>
+    <label>
+      <input type="range" id="hue" min="0" max="360">
+      Hue
+    </label>
+    <label>
+      <input type="checkbox" id="invert">
+      Swapped
+    </label>
+    <label>
+      <input type="checkbox" id="dark">
+      Dark
+    </label>
+  </form>
+  
+  <footer>
+    By Dan Mercer
+  </footer>
+  
+  <script>
+    const hue = document.querySelector('#hue');
+    document.documentElement.style.setProperty('--hue', 180)
+    hue.oninput = () => {
+      document.documentElement.style.setProperty('--hue', hue.value)
+    }
+
+    const invert = document.querySelector('#invert');
+    invert.oninput = () => {
+      document.documentElement.classList.toggle('t-swapped', invert.checked);
+    }
+
+    const dark = document.querySelector('#dark');
+    document.documentElement.classList.toggle('t-dark', !!window.matchMedia?.('(prefers-color-scheme: dark)')?.matches)
+    dark.oninput = () => {
+      document.documentElement.classList.toggle('t-dark', dark.checked);
+    }
+  </script>
 </body>
+
 </html>
