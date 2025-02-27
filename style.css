@@ -1,109 +1,123 @@
-* {
-  accent-color: var(--color, initial);
-}
-
-html {
-  --default-width: clamp(350px, 70vw, 500px);
-  --spacing: 5px;
-  --hue: 266;
-  --color: oklch(0.56 0.19 var(--hue));
-  --bg-color: white;
-  color: var(--color, black);
-  background-color: var(--bg-color, white);
-  font-family: system-ui, sans-serif;
-
-  &.t-dark {
-    --color: oklch(0.8 0.19 var(--hue));
-    --bg-color: #222;
-    color-scheme: dark;
+@layer techstyle {
+  * {
+    accent-color: var(--color);
   }
 
-  &.t-swapped {
-    --color: black;
-    --bg-color: oklch(0.8 0.19 var(--hue));
+  html {
+    --default-width: clamp(350px, 70vw, 500px);
+    --spacing: 5px;
+    --hue: 266;
+    --color: oklch(0.56 0.19 var(--hue));
+    --bg-color: white;
+    color: var(--color);
+    background-color: var(--bg-color, white);
+    font-family: system-ui, sans-serif;
+
+    &.t-dark {
+      --color: oklch(0.8 0.19 var(--hue));
+      --bg-color: #222;
+      color-scheme: dark;
+    }
+
+    &.t-swapped {
+      --color: black;
+      --bg-color: oklch(0.8 0.19 var(--hue));
+    }
+
+    &.t-swapped.t-dark {
+      --color: white;
+      --bg-color: oklch(0.45 0.19 var(--hue));
+    }
   }
 
-  &.t-swapped.t-dark {
-    --color: white;
-    --bg-color: oklch(0.45 0.19 var(--hue));
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    padding: calc(3 * var(--spacing));
+    box-sizing: border-box;
   }
-}
 
-body {
-  min-height: 100vh;
-  min-height: 100svh;
-  margin: 0;
-  padding: calc(3 * var(--spacing));
-  box-sizing: border-box;
-}
-
-body > :not(header, footer, .t-side-panels) {
-  width: 100%;
-  max-width: var(--default-width);
-  margin: 0 auto;
-}
-
-header,
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing);
-
-  /* center an only child */
-  /* (:only-child wouldn't work with only text) */
-  &:not(:has(> :nth-child(2))) {
-    justify-content: center;
+  body > :not(header, footer, .t-side-panels) {
+    width: 100%;
+    max-width: var(--default-width);
+    margin: 0 auto;
   }
-}
-main ~ footer {
-  /* sticky footer - always at bottom of page even if there's not enough content to push it there */
-  position: sticky;
-  top: 100vh;
-  top: 100svh;
-}
 
-form, section {
-  margin-block: calc(4 * var(--spacing));
-}
+  header,
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing);
 
-a {
-  color: inherit;
-  text-decoration-line: underline;
-  text-decoration-thickness: 2px;
-}
-
-iframe {
-  border: none;
-  width: 100%;
-  min-height: min(65svh, 400px);
-}
-
-button {
-  appearance: none;
-  background: none;
-  color: inherit;
-  border: 2px solid currentColor;
-  border-radius: var(--spacing);
-  padding: var(--spacing) calc(2 * var(--spacing));
-  cursor: pointer;
-}
-
-.t-card {
-  display: block;
-  margin-block: 20px;
-  border: 2px solid currentColor;
-  border-radius: 5px;
-  padding: 5px;
-  position: relative;
-  &[title] {
-    padding-top: calc(5px + 0.5em);
+    /* center an only child */
+    /* (:only-child wouldn't work with only text) */
+    &:not(:has(> :nth-child(2))) {
+      justify-content: center;
+    }
   }
-  &[title]::before {
-    position: absolute;
-    top: -0.5em;
-    content: attr(title);
-    background: var(--bg-color, white);
-    padding-inline: 2px;
+  main ~ footer {
+    /* sticky footer - always at bottom of page even if there's not enough content to push it there */
+    position: sticky;
+    top: 100vh;
+    top: 100svh;
+  }
+
+  form,
+  section {
+    margin-block: calc(4 * var(--spacing));
+  }
+
+  a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  iframe {
+    border: none;
+    width: 100%;
+    min-height: min(65svh, 400px);
+  }
+
+  /* === form elements === */
+
+  *:focus-visible {
+    outline: 2px dashed var(--color);
+    outline-offset: 2px;
+    border-radius: var(--spacing);
+  }
+
+  button {
+    appearance: none;
+    background: none;
+    color: inherit;
+    border: 2px solid currentColor;
+    border-radius: var(--spacing);
+    padding: var(--spacing) calc(2 * var(--spacing));
+    cursor: pointer;
+  }
+
+  /* === custom elements === */
+
+  .t-card {
+    display: block;
+    margin-block: 20px;
+    border: 2px solid currentColor;
+    border-radius: var(--spacing);
+    padding: var(--spacing);
+    position: relative;
+    &[title] {
+      /* extra padding to accommodate the title psuedo-element */
+      padding-top: calc(var(--spacing) + 0.5em);
+    }
+    &[title]::before {
+      position: absolute;
+      top: -0.5em;
+      content: attr(title);
+      background: var(--bg-color, white);
+      padding-inline: 2px;
+    }
   }
 }
