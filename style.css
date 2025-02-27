@@ -1,6 +1,8 @@
 @layer techstyle {
   * {
     accent-color: var(--color);
+    /* TODO what to use for the tap color / :active style */
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
@@ -36,6 +38,7 @@
     margin: 0;
     padding: calc(3 * var(--spacing));
     box-sizing: border-box;
+    line-height: 1.4;
   }
 
   body > :not(header, footer, .t-side-panels) {
@@ -65,7 +68,8 @@
   }
 
   form,
-  section {
+  section,
+  p {
     margin-block: calc(4 * var(--spacing));
   }
 
