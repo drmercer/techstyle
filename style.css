@@ -148,14 +148,14 @@
       margin-bottom: 0;
     }
 
-    &[title] {
+    &[aria-label] {
       /* extra padding to accommodate the title psuedo-element */
       padding-top: calc(var(--spacing-within) + 0.5em);
     }
-    &[title]::before {
+    &[aria-label]::before {
       position: absolute;
-      top: -0.5em;
-      content: attr(title);
+      top: calc(-0.5em - var(--spacing-within));
+      content: attr(aria-label);
       background: var(--bg-color, white);
       padding-inline: 2px;
     }
