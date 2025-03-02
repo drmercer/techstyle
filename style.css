@@ -38,7 +38,7 @@
     min-height: 100vh;
     min-height: 100svh;
     margin: 0;
-    padding: var(--spacing-around);
+    padding-inline: var(--spacing-around);
     line-height: 1.4;
   }
 
@@ -50,14 +50,14 @@
 
   header,
   footer {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-within);
+    padding: var(--spacing-around);
 
     /* center an only child */
-    /* (:only-child wouldn't work with only text) */
-    &:not(:has(> :nth-child(2))) {
+    &:has(> :only-child) {
       justify-content: center;
     }
   }
@@ -115,7 +115,15 @@
     border-radius: var(--spacing-within);
     padding: var(--spacing-within);
     position: relative;
+    /* when it's supported, add margin-trim: block */
 
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
 
     &[title] {
       /* extra padding to accommodate the title psuedo-element */
@@ -128,6 +136,14 @@
       background: var(--bg-color, white);
       padding-inline: 2px;
     }
+
+    /* list of cards */
+    list-style: none;
+  }
+
+  /* list of cards */
+  ul:has(> .t-card) {
+    padding: 0;
   }
 }
 
@@ -152,6 +168,27 @@
       max-width: clamp(350px, 60vw, 500px);
       margin: 0; /* no margin because gap takes care of it */
       flex: 1 1 350px;
+    }
+  }
+
+  .t-fullheight {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* If no header, put a pseudoelement in that spot in the flex arrangement */
+    &:not(:has(> header:first-child))::before {
+      content: '\200b';
+      width: 0;
+      height: 0;
+    }
+
+    /* If no footer, put a pseudoelement in that spot in the flex arrangement */
+    &:not(:has(> footer:last-child))::after {
+      content: '\200b';
+      width: 0;
+      height: 0;
     }
   }
 }

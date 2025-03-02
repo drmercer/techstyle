@@ -3,18 +3,18 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>techstyle</title>
+  <title>techstyle.css</title>
   <meta name="description"
     content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
   <meta name="author" content="Dan Mercer">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <meta property="og:title" content="techstyle">
+  <meta property="og:title" content="techstyle.css">
   <meta property="og:description"
     content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://techstyle.danmercer.net">
-  <meta name="twitter:title" content="techstyle">
+  <meta name="twitter:title" content="techstyle.css">
   <meta name="twitter:description"
     content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
 </head>
@@ -22,7 +22,7 @@
 <body>
   <header>
     <a href="https://danmercer.net">Home</a>
-    <h1>techstyle</h1>
+    <h1><code>techstyle.css</code></h1>
     <button>more</button>
   </header>
 
@@ -31,6 +31,9 @@
       Techstyle is an opinionated stylesheet for quickly building web apps that look &quot;good enough to
       use.&quot;
     </p>
+    <h2>
+      Cards and form elements
+    </h2>
     <form class="t-card" title="Theme settings">
       <label>
         <input type="range" id="hue" min="0" max="360">
@@ -56,7 +59,7 @@
     <h2>
       Side-by-side panels (if room)
     </h2>
-    
+
     <div class="t-sidebyside">
       <div class="t-card">
         A card
@@ -66,7 +69,48 @@
       </div>
     </div>
 
-    <!-- TODO list of cards -->
+    <h2>
+      A list of cards
+    </h2>
+
+    <ul>
+      <li class="t-card">
+        Card one
+      </li>
+      <li class="t-card">
+        Card two
+      </li>
+      <li class="t-card">
+        Card three
+      </li>
+    </ul>
+
+    <h2>
+      A full-page section
+    </h2>
+
+    <section class="t-fullheight">
+      <div class="t-card">
+        A vertically centered card in the full-page section
+      </div>
+    </section>
+
+    <h2>
+      A full-page section with header and footer
+    </h2>
+
+    <section class="t-fullheight">
+      <header>
+        <span>This is the header</span>
+      </header>
+      <div class="t-card">
+        A vertically centered card in the full-page section
+      </div>
+      <footer>
+        <span>This is the footer</span>
+      </footer>
+    </section>
+
     <small>
       <details>
         <summary><strong>Why the name "techstyle"?</strong></summary>
