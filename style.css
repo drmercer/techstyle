@@ -102,7 +102,7 @@
   button, input[type=submit] {
     appearance: none;
     background: none;
-    font-size: inherit;
+    font: inherit;
     color: inherit;
     border: 2px solid currentColor;
     border-radius: var(--spacing-within);
