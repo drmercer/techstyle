@@ -150,6 +150,21 @@
     dark.oninput = () => {
       document.documentElement.classList.toggle('t-dark', dark.checked);
     }
+
+  const randomize = document.querySelector('#randomize');
+  randomize.onclick = () => {
+    const randomHue = Math.floor(Math.random() * 361);
+    hue.value = randomHue;
+    document.documentElement.style.setProperty('--hue', randomHue);
+
+    const randomDark = Math.random() < 0.5;
+    dark.checked = randomDark;
+    document.documentElement.classList.toggle('t-dark', randomDark);
+
+    const randomInvert = Math.random() < 0.5;
+    invert.checked = randomInvert;
+    document.documentElement.classList.toggle('t-swapped', randomInvert);
+  }
   </script>
 </body>
 
