@@ -1,13 +1,15 @@
-@layer techstyle {
+@layer techstyle_base {
   * {
     accent-color: var(--color);
     /* TODO what to use for the tap color / :active style */
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
   }
 
   html {
     --default-width: clamp(350px, 60vw, 700px);
-    --spacing: 5px;
+    --spacing-within: 5px;
+    --spacing-around: calc(4 * var(--spacing-within));
     --hue: 266;
     --color: oklch(0.56 0.19 var(--hue));
     --bg-color: white;
@@ -36,12 +38,11 @@
     min-height: 100vh;
     min-height: 100svh;
     margin: 0;
-    padding: calc(3 * var(--spacing));
-    box-sizing: border-box;
+    padding: var(--spacing-around);
     line-height: 1.4;
   }
 
-  body > :not(header, footer, .t-side-panels) {
+  body > :not(header, footer) {
     width: 100%;
     max-width: var(--default-width);
     margin: 0 auto;
@@ -52,7 +53,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing);
+    padding: var(--spacing-within);
 
     /* center an only child */
     /* (:only-child wouldn't work with only text) */
@@ -70,7 +71,7 @@
   form,
   section,
   p {
-    margin-block: calc(4 * var(--spacing));
+    margin-block: var(--spacing-around);
   }
 
   a {
@@ -90,7 +91,7 @@
   *:focus-visible {
     outline: 2px dashed var(--color);
     outline-offset: 2px;
-    border-radius: var(--spacing);
+    border-radius: var(--spacing-within);
   }
 
   button {
@@ -98,23 +99,27 @@
     background: none;
     color: inherit;
     border: 2px solid currentColor;
-    border-radius: var(--spacing);
-    padding: var(--spacing) calc(2 * var(--spacing));
+    border-radius: var(--spacing-within);
+    padding: var(--spacing-within) calc(2 * var(--spacing-within));
     cursor: pointer;
   }
+}
 
+@layer techstyle_components {
   /* === custom elements === */
 
   .t-card {
     display: block;
     margin-block: 20px;
     border: 2px solid currentColor;
-    border-radius: var(--spacing);
-    padding: var(--spacing);
+    border-radius: var(--spacing-within);
+    padding: var(--spacing-within);
     position: relative;
+
+
     &[title] {
       /* extra padding to accommodate the title psuedo-element */
-      padding-top: calc(var(--spacing) + 0.5em);
+      padding-top: calc(var(--spacing-within) + 0.5em);
     }
     &[title]::before {
       position: absolute;
@@ -122,6 +127,31 @@
       content: attr(title);
       background: var(--bg-color, white);
       padding-inline: 2px;
+    }
+  }
+}
+
+@layer techstyle_utils {
+  .t-sidebyside {
+    margin: var(--spacing-around) 0;
+    padding-inline: var(--spacing-around);
+
+    /* Full-width */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Arrange contents side-by-side */
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-around);
+    flex-wrap: wrap;
+
+    & > * {
+      max-width: clamp(350px, 60vw, 500px);
+      margin: 0; /* no margin because gap takes care of it */
+      flex: 1 1 350px;
     }
   }
 }
