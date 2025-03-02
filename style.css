@@ -99,17 +99,21 @@
     border-radius: var(--spacing-within);
   }
 
-  button {
+  button, input[type=submit] {
     appearance: none;
     background: none;
     font-size: inherit;
     color: inherit;
-    /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
-    border: 2px solid transparent;
+    border: 2px solid currentColor;
     border-radius: var(--spacing-within);
     padding: var(--spacing-within) calc(2 * var(--spacing-within));
     cursor: pointer;
     position: relative;
+  }
+  button {
+    /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
+    /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
+    border: 2px solid transparent;
 
     &::before {
       content: '\200b';
@@ -119,8 +123,8 @@
       right: 0;
       bottom: 0;
       border: inherit;
-      border-color: currentColor;
       border-radius: inherit;
+      border-color: currentColor;
       transition: transform 25ms ease-in;
     }
     &:active::before {
