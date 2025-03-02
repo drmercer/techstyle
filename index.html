@@ -150,7 +150,9 @@
 
   <script>
     const hue = document.querySelector('#hue');
-    document.documentElement.style.setProperty('--hue', 180)
+    hue.value = Math.floor(Math.random() * 361);
+    document.documentElement.style.setProperty('--hue', hue.value);
+
     hue.oninput = () => {
       document.documentElement.style.setProperty('--hue', hue.value)
     }
@@ -168,17 +170,14 @@
 
   const randomize = document.querySelector('#randomize');
   randomize.onclick = () => {
-    const randomHue = Math.floor(Math.random() * 361);
-    hue.value = randomHue;
-    document.documentElement.style.setProperty('--hue', randomHue);
+    hue.value = Math.floor(Math.random() * 361);
+    document.documentElement.style.setProperty('--hue', hue.value);
 
-    const randomDark = Math.random() < 0.5;
-    dark.checked = randomDark;
-    document.documentElement.classList.toggle('t-dark', randomDark);
+    dark.checked = Math.random() < 0.5;
+    document.documentElement.classList.toggle('t-dark', dark.checked);
 
-    const randomInvert = Math.random() < 0.5;
-    invert.checked = randomInvert;
-    document.documentElement.classList.toggle('t-swapped', randomInvert);
+    invert.checked = Math.random() < 0.5;
+    document.documentElement.classList.toggle('t-swapped', invert.checked);
   }
   </script>
 </body>
