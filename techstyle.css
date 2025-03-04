@@ -29,9 +29,9 @@ SOFTWARE.
 @layer techstyle_base {
   * {
     accent-color: var(--color);
-    /* TODO what to use for the tap color / :active style */
-    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
+    /* default tap highlight color is based on the hue */
+    -webkit-tap-highlight-color: oklch(0.56 0.19 var(--hue) / .3);
   }
 
   html {
@@ -123,9 +123,12 @@ SOFTWARE.
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
 
+    /* no tab highlight because :active takes care of that */
+    -webkit-tap-highlight-color: transparent;
     &:active {
       text-decoration-thickness: 3px;
     }
+    /* TODO hover styles? */
   }
 
   iframe {
@@ -142,7 +145,9 @@ SOFTWARE.
     border-radius: var(--spacing-within);
   }
 
-  button, input[type=submit] {
+  button,
+  select,
+  input[type=submit] {
     appearance: none;
     background: none;
     font: inherit;
@@ -153,10 +158,13 @@ SOFTWARE.
     cursor: pointer;
     position: relative;
   }
-  button {
+  button,
+  select {
     /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
     /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
     border: 2px solid transparent;
+    /* no tab highlight because :active takes care of that */
+    -webkit-tap-highlight-color: transparent;
 
     &::before {
       content: '\200b';
@@ -173,6 +181,7 @@ SOFTWARE.
     &:active::before {
       transform: scale(0.92);
     }
+    /* TODO hover styles? */
   }
 
   /* I wish there was a cleaner way to do this... */
