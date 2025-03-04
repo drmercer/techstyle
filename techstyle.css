@@ -226,8 +226,8 @@ SOFTWARE.
     margin: var(--spacing-around) 0;
 
     /* Full-width, with some "padding" */
-    /* (Using width:100vw and actual padding causes a horizontal scrollbar - not sure why...) */
-    width: calc(100vw - 2 * var(--spacing-around));
+    /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
+    width: max(calc(100vw - 6 * var(--spacing-around)), 100%);
     position: relative;
     left: 50%;
     transform: translateX(-50%);

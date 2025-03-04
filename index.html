@@ -31,9 +31,6 @@
       Techstyle is an opinionated stylesheet for quickly building web apps that look &quot;good enough to
       use.&quot;
     </p>
-    <h2>
-      Cards and form elements
-    </h2>
     <form class="t-card" aria-label="Theme settings">
       <label>
         <input type="range" id="hue" min="0" max="360">
@@ -51,19 +48,22 @@
         Randomize
       </button>
     </form>
-    <form class="t-card" aria-label="Another example form" action="https://duckduckgo.com/" target="_blank">
-      <label>
-        <input name="q" type="search">
-        Search DuckDuckGo
-      </label>
-      <button>
-        Go
-      </button>
-    </form>
 
-    <div class="t-card" aria-label="A card containing an iframe">
-      <iframe title="My Iframe" src="https://example.com"></iframe>
-    </div>
+    <h2>
+      A list of cards
+    </h2>
+    
+    <ul>
+      <li class="t-card">
+        Card one
+      </li>
+      <li class="t-card">
+        Card two
+      </li>
+      <li class="t-card">
+        Card three
+      </li>
+    </ul>
 
     <h2>
       Side-by-side panels (if room)
@@ -94,20 +94,21 @@
     </div>
 
     <h2>
-      A list of cards
+      Cards and form elements
     </h2>
+    <form class="t-card" aria-label="Another example form" action="https://duckduckgo.com/" target="_blank">
+      <label>
+        <input name="q" type="search">
+        Search DuckDuckGo
+      </label>
+      <button>
+        Go
+      </button>
+    </form>
 
-    <ul>
-      <li class="t-card">
-        Card one
-      </li>
-      <li class="t-card">
-        Card two
-      </li>
-      <li class="t-card">
-        Card three
-      </li>
-    </ul>
+    <div class="t-card" aria-label="A card containing an iframe">
+      <iframe title="My Iframe" src="https://example.com"></iframe>
+    </div>
 
     <h2>
       A full-page section
