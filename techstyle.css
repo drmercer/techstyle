@@ -151,28 +151,32 @@ SOFTWARE.
     appearance: none;
     background: none;
     font: inherit;
+    font-size: inherit;
     color: inherit;
-    border: 2px solid currentColor;
+    --border-width: 2px;
+    border: var(--border-width) solid currentColor;
     border-radius: var(--spacing-within);
     padding: var(--spacing-within) calc(2 * var(--spacing-within));
     cursor: pointer;
     position: relative;
+
+    fieldset & + & {
+      border-inline-start-width: 0;
+    }
   }
   button,
   select {
     /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
     /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
-    border: 2px solid transparent;
+    border: var(--border-width) solid transparent;
     /* no tab highlight because :active takes care of that */
     -webkit-tap-highlight-color: transparent;
 
     &::before {
       content: '\200b';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      /* inset is relative to the content box, not the border box, so we have to correct it */
+      inset: calc(var(--border-width) * -1);
       border: inherit;
       border-radius: inherit;
       border-color: currentColor;
@@ -191,15 +195,52 @@ SOFTWARE.
   input[type=number],
   input[type=search],
   input[type=tel],
-  input[type=url] {
+  input[type=url],
+  textarea {
     appearance: none;
     color: inherit;
     background: inherit;
+    font: inherit;
     border: 1px solid currentColor;
     padding: var(--spacing-within);
     border-radius: var(--spacing-within);
     border-left-width: 0;
     border-right-width: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: inherit;
+      opacity: .8;
+      font-style: italic;
+    }
+
+    fieldset & {
+      flex: 1;
+    }
+  }
+
+  textarea {
+    field-sizing: content;
+    resize: none;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* TODO if I want to do this, I'll need to figure something out with borders... */
+    /* justify-content: space-between;
+    align-items: stretch; */
+
+    > :not(:last-child) {
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+    > :not(:first-child) {
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
   }
 }
 

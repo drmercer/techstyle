@@ -104,13 +104,27 @@
         Cards and form elements
       </h2>
       <form class="t-card" aria-label="Another example form" action="https://duckduckgo.com/" target="_blank">
-        <label>
-          <input name="q" type="search">
-          Search DuckDuckGo
-        </label>
-        <button>
-          Go
-        </button>
+        <fieldset>
+          <input name="q" type="search" placeholder="Search DuckDuckGo"></input>
+          <button>
+            Go
+          </button>
+        </fieldset>
+        </form>
+        
+        <form class="t-card" aria-label="Textarea demo">
+          <label>
+            Multiline text (textarea):
+            <textarea></textarea>
+            </label>
+          <fieldset>
+            <button type="reset">
+              Reset
+            </button>
+            <button type="reset">
+              Save
+            </button>
+            </fieldset>
       </form>
 
       <div class="t-card" aria-label="A card containing an iframe">
