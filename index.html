@@ -31,116 +31,130 @@
       Techstyle is an opinionated stylesheet for quickly building web apps that look &quot;good enough to
       use.&quot;
     </p>
-    <form class="t-card" aria-label="Theme settings">
-      <label>
-        <input type="range" id="hue" min="0" max="360">
-        Hue
-      </label>
-      <label>
-        <input type="checkbox" id="invert">
-        Swapped
-      </label>
-      <label>
-        <input type="checkbox" id="dark">
-        Dark
-      </label>
-      <button type="button" id="randomize">
-        Randomize
-      </button>
-    </form>
+    <section>
+      <form class="t-card" aria-label="Theme settings">
+        <label>
+          <input type="range" id="hue" min="0" max="360">
+          Hue
+        </label>
+        <label>
+          <input type="checkbox" id="invert">
+          Swapped
+        </label>
+        <label>
+          <input type="checkbox" id="dark">
+          Dark
+        </label>
+        <button type="button" id="randomize">
+          Randomize
+        </button>
+      </form>
+    </section>
 
-    <h2>
-      A list of cards
-    </h2>
-    
-    <ul>
-      <li class="t-card">
-        Card one
-      </li>
-      <li class="t-card">
-        Card two
-      </li>
-      <li class="t-card">
-        Card three
-      </li>
-    </ul>
+    <section>
+      <h2>
+        A list of cards
+      </h2>
 
-    <h2>
-      Side-by-side panels (if room)
-    </h2>
+      <ul>
+        <li class="t-card">
+          Card one
+        </li>
+        <li class="t-card">
+          Card two
+        </li>
+        <li class="t-card">
+          Card three
+        </li>
+      </ul>
+    </section>
 
-    <div class="t-sidebyside">
-      <section>
-        <h3>First panel</h3>
-        <div class="t-card">
-          A card
-        </div>
-      </section>
-      <section>
-        <h3>Second panel</h3>
-        <div class="t-card">
-          Another card
-        </div>
-      </section>
-      <section>
-        <h3>Third panel</h3>
-        <div class="t-card">
-          One more card
-        </div>
-        <div class="t-card">
-          Another card
-        </div>
-      </section>
-    </div>
+    <section>
+      <h2>
+        Side-by-side panels (if room)
+      </h2>
 
-    <h2>
-      Cards and form elements
-    </h2>
-    <form class="t-card" aria-label="Another example form" action="https://duckduckgo.com/" target="_blank">
-      <label>
-        <input name="q" type="search">
-        Search DuckDuckGo
-      </label>
-      <button>
-        Go
-      </button>
-    </form>
-
-    <div class="t-card" aria-label="A card containing an iframe">
-      <iframe title="My Iframe" src="https://example.com"></iframe>
-    </div>
-
-    <h2>
-      A full-page section
-    </h2>
-
-    <section class="t-fullheight">
-      <div class="t-card">
-        A vertically centered card in the full-page section
+      <div class="t-sidebyside">
+        <section>
+          <h3>First panel</h3>
+          <div class="t-card">
+            A card
+          </div>
+        </section>
+        <section>
+          <h3>Second panel</h3>
+          <div class="t-card">
+            Another card
+          </div>
+        </section>
+        <section>
+          <h3>Third panel</h3>
+          <div class="t-card">
+            One more card
+          </div>
+          <div class="t-card">
+            Another card
+          </div>
+        </section>
       </div>
     </section>
 
-    <h2>
-      A full-page section with header and footer
-    </h2>
+    <section>
+      <h2>
+        Cards and form elements
+      </h2>
+      <form class="t-card" aria-label="Another example form" action="https://duckduckgo.com/" target="_blank">
+        <label>
+          <input name="q" type="search">
+          Search DuckDuckGo
+        </label>
+        <button>
+          Go
+        </button>
+      </form>
 
-    <section class="t-fullheight">
-      <header>
-        <span>This is the header</span>
-      </header>
-      <div class="t-card">
-        A vertically centered card in the full-page section
+      <div class="t-card" aria-label="A card containing an iframe">
+        <iframe title="My Iframe" src="https://example.com"></iframe>
       </div>
-      <footer>
-        <span>This is the footer</span>
-      </footer>
     </section>
 
-    <h2>Example application screens</h2>
+    <section>
+      <h2>
+        A full-page section
+      </h2>
 
-    <ul>
-      <li><a href="./examples/landing.html">A landing page for a cool app</a></li>
-    </ul>
+      <section class="t-fullheight">
+        <div class="t-card">
+          A vertically centered card in the full-page section
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>
+        A full-page section with header and footer
+      </h2>
+
+      <section class="t-fullheight">
+        <header>
+          <span>This is the header</span>
+        </header>
+        <div class="t-card">
+          A vertically centered card in the full-page section
+        </div>
+        <footer>
+          <span>This is the footer</span>
+        </footer>
+      </section>
+    </section>
+
+    <section>
+      <h2>Example application screens</h2>
+
+      <ul>
+        <li><a href="./examples/landing.html">A landing page for a cool app</a></li>
+      </ul>
+    </section>
 
     <small>
       <details>
@@ -152,6 +166,7 @@
         </p>
       </details>
     </small>
+
   </main>
 
   <footer>

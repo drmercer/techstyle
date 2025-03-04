@@ -69,12 +69,20 @@ SOFTWARE.
     margin: 0;
     padding-inline: var(--spacing-around);
     line-height: 1.4;
+
+    /* when it's supported, add margin-trim: block */
+    > :first-child {
+      margin-top: 0;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   body > :not(header, footer) {
     width: 100%;
     max-width: var(--default-width);
-    margin: 0 auto;
+    margin-inline: auto;
   }
 
   header,
@@ -98,9 +106,16 @@ SOFTWARE.
   }
 
   form,
-  section,
   p {
     margin-block: var(--spacing-around);
+  }
+
+  /* sections have margin when they have siblings */
+  * + section {
+    margin-top: calc(2 * var(--spacing-around));
+  }
+  section:has(+ *) {
+    margin-bottom: calc(2 * var(--spacing-around));
   }
 
   a {
