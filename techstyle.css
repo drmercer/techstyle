@@ -120,12 +120,6 @@ SOFTWARE.
       justify-content: center;
     }
   }
-  main ~ footer {
-    /* sticky footer - always at bottom of page even if there's not enough content to push it there */
-    position: sticky;
-    top: 100vh;
-    top: 100svh;
-  }
 
   form,
   p {
