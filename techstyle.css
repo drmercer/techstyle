@@ -32,9 +32,10 @@ SOFTWARE.
 
   * {
     accent-color: var(--t-color-fg);
-    box-sizing: border-box;
     /* default tap highlight color is based on the hue */
     -webkit-tap-highlight-color: oklch(0.56 0.19 var(--t-hue) / .3);
+    /* this makes so many little things easier */
+    box-sizing: border-box;
   }
 
   html {
@@ -47,6 +48,10 @@ SOFTWARE.
     color: var(--t-color-fg);
     background-color: var(--t-color-bg);
     font-family: system-ui, sans-serif;
+
+    /* avoids runaway text lines */
+    word-wrap: break-word;
+    hyphens: auto;
   }
 
   .t-dark {
@@ -143,9 +148,11 @@ SOFTWARE.
     border-radius: var(--t-spacing-within);
   }
 
+  /* Button inputs */
   button,
   select,
-  input[type=submit] {
+  input[type=submit],
+  input::file-selector-button {
     appearance: none;
     background: none;
     font: inherit;
@@ -186,7 +193,8 @@ SOFTWARE.
     /* TODO hover styles? */
   }
 
-  /* I wish there was a cleaner way to do this... */
+  /* Text inputs */
+  /* (I wish there was a cleaner way to do this...) */
   input[type=text],
   input[type=password],
   input[type=email],
@@ -199,6 +207,7 @@ SOFTWARE.
     color: inherit;
     background: inherit;
     font: inherit;
+    font-family: monospace;
     border: 1px solid currentColor;
     padding: var(--t-spacing-within);
     border-radius: var(--t-spacing-within);
@@ -242,6 +251,12 @@ SOFTWARE.
   }
 
   /* === interactive elements === */
+
+  ::selection {
+    /* Brave for Android had (has?) a bug where CSS vars don't work in ::selection, hence the defaults here */
+    color: var(--t-color-bg, white);
+    background-color: var(--t-color-fg, #888);
+  }
 
   a {
     color: inherit;
