@@ -27,47 +27,51 @@ SOFTWARE.
 */
 
 @layer techstyle {
+
+  /* === theme === */
+
   * {
-    accent-color: var(--color);
+    accent-color: var(--t-color-fg);
     box-sizing: border-box;
     /* default tap highlight color is based on the hue */
-    -webkit-tap-highlight-color: oklch(0.56 0.19 var(--hue) / .3);
+    -webkit-tap-highlight-color: oklch(0.56 0.19 var(--t-hue) / .3);
   }
 
   html {
     /* TODO why does overriding these only work if applied to `html`? */
-    --default-width: clamp(350px, 60vw, 700px);
-    --spacing-within: 5px;
-    --spacing-around: calc(4 * var(--spacing-within));
-    --hue: 266;
-    --color: oklch(0.56 0.19 var(--hue));
-    --bg-color: white;
-    color: var(--color);
-    background-color: var(--bg-color, white);
+    --t-spacing-within: 5px;
+    --t-spacing-around: calc(4 * var(--t-spacing-within));
+    --t-hue: 266;
+    --t-color-fg: oklch(0.56 0.19 var(--t-hue));
+    --t-color-bg: white;
+    color: var(--t-color-fg);
+    background-color: var(--t-color-bg);
     font-family: system-ui, sans-serif;
   }
 
   .t-dark {
-    --color: oklch(0.8 0.19 var(--hue));
-    --bg-color: #222;
+    --t-color-fg: oklch(0.8 0.19 var(--t-hue));
+    --t-color-bg: #222;
     color-scheme: dark;
   }
 
   .t-swapped {
-    --color: black;
-    --bg-color: oklch(0.8 0.19 var(--hue));
+    --t-color-fg: black;
+    --t-color-bg: oklch(0.8 0.19 var(--t-hue));
   }
 
   .t-swapped.t-dark {
-    --color: white;
-    --bg-color: oklch(0.45 0.19 var(--hue));
+    --t-color-fg: white;
+    --t-color-bg: oklch(0.45 0.19 var(--t-hue));
   }
+
+  /* === base classless styles === */
 
   body {
     min-height: 100vh;
     min-height: 100svh;
     margin: 0;
-    padding-inline: var(--spacing-around);
+    padding-inline: var(--t-spacing-around);
     line-height: 1.4;
 
     /* when it's supported, add margin-trim: block */
@@ -81,7 +85,8 @@ SOFTWARE.
 
   body > :not(header, footer) {
     width: 100%;
-    max-width: var(--default-width);
+    /* Apply max-width everywhere (except some elements escape this - see "full width" snippets) */
+    max-width: clamp(350px, 60vw, 700px);
     margin-inline: auto;
   }
 
@@ -97,12 +102,12 @@ SOFTWARE.
     &:not(.t-sidebyside *, .t-card *, dialog *) {
       /* Full-width, with some "padding" (.t-sidebyside also does this) */
       /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
-      width: max(calc(100vw - 6 * var(--spacing-around)), 100%);
+      width: max(calc(100vw - 6 * var(--t-spacing-around)), 100%);
       position: relative;
       left: 50%;
       transform: translateX(-50%);
 
-      padding: var(--spacing-around);
+      padding: var(--t-spacing-around);
     }
 
     /* center an only child */
@@ -119,42 +124,23 @@ SOFTWARE.
 
   form,
   p {
-    margin-block: var(--spacing-around);
+    margin-block: var(--t-spacing-around);
   }
 
   /* sections have margin when they have siblings */
   * + section {
-    margin-top: calc(2 * var(--spacing-around));
+    margin-top: calc(2 * var(--t-spacing-around));
   }
   section:has(+ *) {
-    margin-bottom: calc(2 * var(--spacing-around));
-  }
-
-  a {
-    color: inherit;
-    text-decoration-line: underline;
-    text-decoration-thickness: 2px;
-
-    /* no tab highlight because :active takes care of that */
-    -webkit-tap-highlight-color: transparent;
-    &:active {
-      text-decoration-thickness: 3px;
-    }
-    /* TODO hover styles? */
-  }
-
-  iframe {
-    border: none;
-    width: 100%;
-    min-height: min(65svh, 400px);
+    margin-bottom: calc(2 * var(--t-spacing-around));
   }
 
   /* === form elements === */
 
   *:focus-visible {
-    outline: 2px dashed var(--color);
+    outline: 2px dashed var(--t-color-fg);
     outline-offset: 2px;
-    border-radius: var(--spacing-within);
+    border-radius: var(--t-spacing-within);
   }
 
   button,
@@ -167,8 +153,8 @@ SOFTWARE.
     color: inherit;
     --border-width: 2px;
     border: var(--border-width) solid currentColor;
-    border-radius: var(--spacing-within);
-    padding: var(--spacing-within) calc(2 * var(--spacing-within));
+    border-radius: var(--t-spacing-within);
+    padding: var(--t-spacing-within) calc(2 * var(--t-spacing-within));
     cursor: pointer;
     position: relative;
 
@@ -214,8 +200,8 @@ SOFTWARE.
     background: inherit;
     font: inherit;
     border: 1px solid currentColor;
-    padding: var(--spacing-within);
-    border-radius: var(--spacing-within);
+    padding: var(--t-spacing-within);
+    border-radius: var(--t-spacing-within);
     border-left-width: 0;
     border-right-width: 0;
     width: 100%;
@@ -257,9 +243,33 @@ SOFTWARE.
 
   /* === interactive elements === */
 
+  a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+
+    /* no tab highlight because :active takes care of that */
+    -webkit-tap-highlight-color: transparent;
+    &:active {
+      text-decoration-thickness: 3px;
+    }
+    /* TODO hover styles? */
+  }
+
+  iframe {
+    border: none;
+    width: 100%;
+    min-height: min(65svh, 400px);
+  }
+
   dialog, [popover] {
     width: 300px;
     max-width: 80%;
+
+    &::backdrop {
+      background-color: var(--t-color-bg);
+      opacity: 0.9;
+    }
   }
 
   /* === custom elements === */
@@ -275,8 +285,8 @@ SOFTWARE.
   .t-card, dialog, [popover] {
     color: inherit;
     border: 2px solid currentColor;
-    border-radius: var(--spacing-within);
-    padding: var(--spacing-within);
+    border-radius: var(--t-spacing-within);
+    padding: var(--t-spacing-within);
 
     /* when it's supported, add margin-trim: block */
     > :first-child {
@@ -288,19 +298,14 @@ SOFTWARE.
 
     &[aria-label] {
       /* extra padding to accommodate the title psuedo-element */
-      padding-top: calc(var(--spacing-within) + 0.5em);
+      padding-top: calc(var(--t-spacing-within) + 0.5em);
     }
     &[aria-label]::before {
       position: absolute;
-      top: calc(-0.5em - var(--spacing-within));
+      top: calc(-0.5em - var(--t-spacing-within));
       content: attr(aria-label);
-      background: var(--bg-color);
+      background: var(--t-color-bg);
       padding-inline: 2px;
-    }
-
-    &::backdrop {
-      background-color: var(--bg-color);
-      opacity: 0.9;
     }
   }
 
@@ -312,11 +317,11 @@ SOFTWARE.
   /* === layouts === */
 
   .t-sidebyside {
-    margin: var(--spacing-around) 0;
+    margin: var(--t-spacing-around) 0;
 
     /* Full-width, with some "padding" (footer/header also does this) */
     /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
-    width: max(calc(100vw - 6 * var(--spacing-around)), 100%);
+    width: max(calc(100vw - 6 * var(--t-spacing-around)), 100%);
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -324,7 +329,7 @@ SOFTWARE.
     /* Arrange contents side-by-side */
     display: flex;
     justify-content: center;
-    gap: var(--spacing-around);
+    gap: var(--t-spacing-around);
     flex-wrap: wrap;
 
     & > * {
