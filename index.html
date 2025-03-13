@@ -111,7 +111,7 @@
           </button>
         </fieldset>
         </form>
-        
+
         <form class="t-card" aria-label="Textarea demo">
           <label>
             Multiline text (textarea):
@@ -158,6 +158,18 @@
         </div>
         <footer>
           <span>This is the footer</span>
+          <button popovertarget="demodialog">Open dialog</button>
+          <dialog id="demodialog" popover="auto">
+            <p>
+              Hello, this is a dialog!
+            </p>
+            <form method="dialog">
+              <footer>
+                <button autofocus type="submit">Cancel</button>
+                <button type="submit">Ok</button>
+              </footer>
+            </form>
+          </dialog>
         </footer>
       </section>
     </section>

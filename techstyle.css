@@ -26,7 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-@layer techstyle_base {
+@layer techstyle {
   * {
     accent-color: var(--color);
     box-sizing: border-box;
@@ -92,6 +92,9 @@ SOFTWARE.
     justify-content: space-between;
     align-items: center;
     padding: var(--spacing-around);
+    flex-wrap: wrap;
+
+
 
     /* center an only child */
     &:has(> :only-child) {
@@ -242,24 +245,34 @@ SOFTWARE.
       border-end-start-radius: 0;
     }
   }
-}
 
-@layer techstyle_components {
+  /* === interactive elements === */
+
+  dialog, [popover] {
+    width: 300px;
+    max-width: 80%;
+  }
+
   /* === custom elements === */
 
   .t-card {
     display: block;
     margin-block: 20px;
+    position: relative;
+
+    /* list of cards */
+    list-style: none;
+  }
+  .t-card, dialog, [popover] {
+    color: inherit;
     border: 2px solid currentColor;
     border-radius: var(--spacing-within);
     padding: var(--spacing-within);
-    position: relative;
-    /* when it's supported, add margin-trim: block */
 
+    /* when it's supported, add margin-trim: block */
     > :first-child {
       margin-top: 0;
     }
-
     > :last-child {
       margin-bottom: 0;
     }
@@ -272,21 +285,23 @@ SOFTWARE.
       position: absolute;
       top: calc(-0.5em - var(--spacing-within));
       content: attr(aria-label);
-      background: var(--bg-color, white);
+      background: var(--bg-color);
       padding-inline: 2px;
     }
 
-    /* list of cards */
-    list-style: none;
+    &::backdrop {
+      background-color: var(--bg-color);
+      opacity: 0.9;
+    }
   }
 
   /* list of cards */
   ul:has(> .t-card) {
     padding: 0;
   }
-}
 
-@layer techstyle_utils {
+  /* === layouts === */
+
   .t-sidebyside {
     margin: var(--spacing-around) 0;
 
