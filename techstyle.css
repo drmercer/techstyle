@@ -91,10 +91,19 @@ SOFTWARE.
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-around);
     flex-wrap: wrap;
 
+    /* Make footers/headers full-page, unless they have a container */
+    &:not(.t-sidebyside *, .t-card *, dialog *) {
+      /* Full-width, with some "padding" (.t-sidebyside also does this) */
+      /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
+      width: max(calc(100vw - 6 * var(--spacing-around)), 100%);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
 
+      padding: var(--spacing-around);
+    }
 
     /* center an only child */
     &:has(> :only-child) {
@@ -305,7 +314,7 @@ SOFTWARE.
   .t-sidebyside {
     margin: var(--spacing-around) 0;
 
-    /* Full-width, with some "padding" */
+    /* Full-width, with some "padding" (footer/header also does this) */
     /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
     width: max(calc(100vw - 6 * var(--spacing-around)), 100%);
     position: relative;
