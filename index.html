@@ -239,7 +239,7 @@
         console.error('unable to parse color', raw);
         return '000000';
       }
-      return m.slice(1).map(n => Math.round(n * 255).toString(16)).join('');
+      return m.slice(1).map(n => Math.max(0, Math.min(255, Math.round(n * 255))).toString(16)).join('');
     }
 
     function update() {
