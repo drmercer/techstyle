@@ -218,6 +218,7 @@
 
     const dark = document.querySelector('#dark');
     dark.checked = !!window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
+    dark.oninput = update;
 
     const sensor = document.querySelector('#colorsensor');
     
