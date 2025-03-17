@@ -7,8 +7,13 @@
   <meta name="description"
     content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
   <meta name="author" content="Dan Mercer">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="https://danmercer.net/api/favicon?text=fff&bg=000">
+  <meta name="theme-color" content="#000000">
+  
   <link rel="stylesheet" href="techstyle.css">
+  
   <meta property="og:title" content="techstyle.css">
   <meta property="og:description"
     content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
@@ -201,37 +206,53 @@
     <small>By <a href="https://danmercer.net">Dan Mercer</a></small>
   </footer>
 
+  <div id="colorsensor" style="display: none; color: rgb(from var(--t-color-fg) r g b); background-color: rgb(from var(--t-color-bg) r g b);"></div>
+
   <script>
     const hue = document.querySelector('#hue');
     hue.value = Math.floor(Math.random() * 361);
-    document.documentElement.style.setProperty('--hue', hue.value);
-
-    hue.oninput = () => {
-      document.documentElement.style.setProperty('--hue', hue.value)
-    }
+    hue.oninput = update;
 
     const invert = document.querySelector('#invert');
-    invert.oninput = () => {
-      document.documentElement.classList.toggle('t-swapped', invert.checked);
-    }
+    invert.oninput = update;
 
     const dark = document.querySelector('#dark');
-    document.documentElement.classList.toggle('t-dark', !!window.matchMedia?.('(prefers-color-scheme: dark)')?.matches)
-    dark.oninput = () => {
-      document.documentElement.classList.toggle('t-dark', dark.checked);
+    dark.checked = !!window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
+
+    const sensor = document.querySelector('#colorsensor');
+    
+    update();
+
+    const randomize = document.querySelector('#randomize');
+    randomize.onclick = () => {
+      hue.value = Math.floor(Math.random() * 361);
+      dark.checked = Math.random() < 0.5;
+      invert.checked = Math.random() < 0.5;
+      update();
+    }
+    
+    function getColorHex(property) {
+      const raw = window.getComputedStyle(colorsensor).getPropertyValue(property);
+      // example: color(srgb 0.248018 0.41213 0.886475)
+      const m = raw.match(/color\(srgb (\S+) (\S+) (\S+)\)/);
+      if (!m) {
+        console.error('unable to parse color', raw);
+        return '000000';
+      }
+      return m.slice(1).map(n => Math.round(n * 255).toString(16)).join('');
     }
 
-  const randomize = document.querySelector('#randomize');
-  randomize.onclick = () => {
-    hue.value = Math.floor(Math.random() * 361);
-    document.documentElement.style.setProperty('--hue', hue.value);
+    function update() {
+      document.documentElement.style.setProperty('--t-hue', hue.value)
+      document.documentElement.classList.toggle('t-swapped', invert.checked);
+      document.documentElement.classList.toggle('t-dark', dark.checked);
 
-    dark.checked = Math.random() < 0.5;
-    document.documentElement.classList.toggle('t-dark', dark.checked);
+      const fg = getColorHex('color');
+      const bg = getColorHex('background-color');
 
-    invert.checked = Math.random() < 0.5;
-    document.documentElement.classList.toggle('t-swapped', invert.checked);
-  }
+      document.querySelector('link[rel="icon"]').href = `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
+      document.querySelector('meta[name=theme-color]').content = '#' + (invert.checked ? bg : fg);
+    }
   </script>
 </body>
 
