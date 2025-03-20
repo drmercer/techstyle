@@ -56,6 +56,8 @@ SOFTWARE.
     --t-scrollbar-width: calc(2 * var(--t-spacing-within));
     /* prevents headers/footers from causing horizontal scroll */
     overflow-x: clip;
+    /* for t-fullheight scroll snapping */
+    scroll-snap-type: y proximity;
   }
 
   .t-dark {
@@ -378,6 +380,11 @@ SOFTWARE.
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &:not(:only-child) {
+      /* scroll snapping if it has siblings */
+      scroll-snap-align: start;
+    }
 
     /* If no header, put a pseudoelement in that spot in the flex arrangement */
     &:not(:has(> header:first-child))::before {
