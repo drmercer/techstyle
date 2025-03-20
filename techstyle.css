@@ -305,11 +305,11 @@ SOFTWARE.
   dialog, [popover] {
     width: 300px;
     max-width: 80%;
-
-    &::backdrop {
-      background-color: var(--t-color-bg);
-      opacity: 0.9;
-    }
+    background-color: var(--t-color-bg);
+  }
+  dialog::backdrop {
+    background-color: var(--t-color-bg);
+    opacity: 0.9;
   }
 
   /* === custom elements === */
