@@ -97,8 +97,6 @@ SOFTWARE.
   /* === base classless styles === */
 
   body {
-    min-height: 100vh;
-    min-height: 100svh;
     margin: 0;
     padding-inline: var(--t-spacing-around);
     line-height: 1.4;
