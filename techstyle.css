@@ -52,6 +52,10 @@ SOFTWARE.
     /* avoids runaway text lines */
     word-wrap: break-word;
     hyphens: auto;
+
+    --t-scrollbar-width: calc(2 * var(--t-spacing-within));
+    /* prevents headers/footers from causing horizontal scroll */
+    overflow-x: clip;
   }
 
   .t-dark {
@@ -68,6 +72,26 @@ SOFTWARE.
   .t-swapped.t-dark {
     --t-color-fg: white;
     --t-color-bg: oklch(0.45 0.19 var(--t-hue));
+  }
+
+  /* scrollbar styles */
+  body::-webkit-scrollbar {
+    width: var(--t-scrollbar-width);
+  }
+  body::-webkit-scrollbar-thumb {
+    background: var(--t-color-fg);
+    border-radius: 4px;
+    border: 2px solid var(--t-color-bg);
+  }
+  body::-webkit-scrollbar-track {
+    background: var(--t-color-bg);
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    :root {
+      /* for header width calculations */
+      --t-scrollbar-width: 0;
+      scrollbar-color: var(--t-color-fg) var(--t-color-bg);
+    }
   }
 
   /* === base classless styles === */
@@ -105,14 +129,14 @@ SOFTWARE.
 
     /* Make footers/headers full-page, unless they have a container */
     &:not(.t-sidebyside *, .t-card *, dialog *) {
-      /* Full-width, with some "padding" (.t-sidebyside also does this) */
-      /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
-      width: max(calc(100vw - 6 * var(--t-spacing-around)), 100%);
+      /* Full-width, with some padding (.t-sidebyside also does this) */
+      /* 100vw includes the scrollbar width, so we have to subtract it here. Plus we have overflow-x:clip just in case. */
+      width: max(calc(100vw - var(--t-scrollbar-width)), 100%);
       position: relative;
       left: 50%;
       transform: translateX(-50%);
 
-      padding: var(--t-spacing-around);
+      padding: var(--t-spacing-around) calc(2 * var(--t-spacing-around));
     }
 
     /* center an only child */
@@ -328,12 +352,13 @@ SOFTWARE.
   .t-sidebyside {
     margin: var(--t-spacing-around) 0;
 
-    /* Full-width, with some "padding" (footer/header also does this) */
-    /* (Using width:100vw and actual padding causes horizontal scrolling, probably because 100vw includes the scrollbar width) */
-    width: max(calc(100vw - 6 * var(--t-spacing-around)), 100%);
+    /* Full-width, with some padding (.t-sidebyside also does this) */
+    /* 100vw includes the scrollbar width, so we have to subtract it here. Plus we have overflow-x:clip just in case. */
+    width: max(calc(100vw - var(--t-scrollbar-width)), 100%);
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    padding-inline: var(--t-spacing-around);
 
     /* Arrange contents side-by-side */
     display: flex;
