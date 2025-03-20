@@ -36,6 +36,14 @@ SOFTWARE.
     view-transition-name: attr(data-t-vt-name type(<custom-ident>), none);
   }
 
+  /* See https://www.gfor.rest/blog/making-pwas-feel-native#overscroll-behavior */
+  @media (display-mode: standalone) {
+    html,
+    body {
+      overscroll-behavior: none;
+    }
+  }
+
   /* === theme === */
 
   * {
