@@ -31,6 +31,10 @@ SOFTWARE.
   @view-transition {
     navigation: auto;
   }
+  /* an easy way to set VT names from HTML */
+  [data-t-vt-name] {
+    view-transition-name: attr(data-t-vt-name type(<custom-ident>), none);
+  }
 
   /* === theme === */
 
@@ -61,6 +65,7 @@ SOFTWARE.
     --t-scrollbar-width: calc(2 * var(--t-spacing-within));
     /* prevents headers/footers from causing horizontal scroll */
     overflow-x: clip;
+    scroll-behavior: smooth;
   }
 
   .t-dark {
@@ -100,6 +105,10 @@ SOFTWARE.
   }
 
   /* === base classless styles === */
+
+  :target {
+    scroll-margin: var(--t-spacing-around);
+  }
 
   body {
     margin: 0;
