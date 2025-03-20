@@ -28,6 +28,10 @@ SOFTWARE.
 
 @layer techstyle {
 
+  @view-transition {
+    navigation: auto;
+  }
+
   /* === theme === */
 
   * {
