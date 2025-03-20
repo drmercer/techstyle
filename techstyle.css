@@ -184,29 +184,38 @@ SOFTWARE.
     fieldset & + & {
       border-inline-start-width: 0;
     }
-  }
-  button,
-  select {
-    /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
-    /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
-    border: var(--border-width) solid transparent;
-    /* no tab highlight because :active takes care of that */
-    -webkit-tap-highlight-color: transparent;
 
-    &::before {
-      content: '\200b';
-      position: absolute;
-      /* inset is relative to the content box, not the border box, so we have to correct it */
-      inset: calc(var(--border-width) * -1);
-      border: inherit;
-      border-radius: inherit;
-      border-color: currentColor;
-      transition: transform 25ms ease-in;
+    @media (prefers-reduced-motion) {
+      &:active {
+        text-decoration: underline;
+      }
     }
-    &:active::before {
-      transform: scale(0.92);
+  }
+  /* animate buttons/selects when clicked */
+  @media not (prefers-reduced-motion) {
+    button,
+    select {
+      /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
+      /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
+      border: var(--border-width) solid transparent;
+      /* no tab highlight because :active takes care of that */
+      -webkit-tap-highlight-color: transparent;
+
+      &::before {
+        content: '\200b';
+        position: absolute;
+        /* inset is relative to the content box, not the border box, so we have to correct it */
+        inset: calc(var(--border-width) * -1);
+        border: inherit;
+        border-radius: inherit;
+        border-color: currentColor;
+        transition: transform 25ms ease-in;
+      }
+      &:active::before {
+        transform: scale(0.92);
+      }
+      /* TODO hover styles? */
     }
-    /* TODO hover styles? */
   }
 
   /* Text inputs */
