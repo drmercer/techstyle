@@ -223,10 +223,10 @@ SOFTWARE.
         border: inherit;
         border-radius: inherit;
         border-color: currentColor;
-        transition: transform 25ms ease-in;
+        transition: scale 25ms ease-in;
       }
       &:active::before {
-        transform: scale(0.92);
+        scale: 0.92;
       }
       /* TODO hover styles? */
     }
