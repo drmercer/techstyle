@@ -52,6 +52,7 @@ SOFTWARE.
     /* avoids runaway text lines */
     word-wrap: break-word;
     hyphens: auto;
+    box-decoration-break: clone;
 
     --t-scrollbar-width: calc(2 * var(--t-spacing-within));
     /* prevents headers/footers from causing horizontal scroll */
@@ -338,11 +339,11 @@ SOFTWARE.
 
     &[aria-label] {
       /* extra padding to accommodate the title psuedo-element */
-      padding-top: calc(var(--t-spacing-within) + 0.5em);
+      padding-top: calc(var(--t-spacing-within) + 0.5lh);
     }
     &[aria-label]::before {
       position: absolute;
-      top: calc(-0.5em - var(--t-spacing-within));
+      top: calc(-0.5lh - var(--t-spacing-within));
       content: attr(aria-label);
       background: var(--t-color-bg);
       padding-inline: 2px;
