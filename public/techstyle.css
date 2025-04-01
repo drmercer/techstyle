@@ -162,8 +162,18 @@ SOFTWARE.
   }
 
   form,
-  p {
+  p,
+  hr {
     margin-block: var(--t-spacing-around);
+  }
+
+  hr {
+    border: none;
+    border-bottom: 2px solid currentColor;
+  }
+
+  pre {
+    white-space: pre-wrap;
   }
 
   /* sections have margin when they have siblings */
@@ -328,6 +338,10 @@ SOFTWARE.
   dialog::backdrop {
     background-color: var(--t-color-bg);
     opacity: 0.9;
+  }
+
+  summary {
+    cursor: pointer;
   }
 
   /* === custom elements === */
