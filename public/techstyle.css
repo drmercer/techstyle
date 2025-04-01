@@ -31,10 +31,6 @@ SOFTWARE.
   @view-transition {
     navigation: auto;
   }
-  /* an easy way to set VT names from HTML */
-  [data-t-vt-name] {
-    view-transition-name: attr(data-t-vt-name type(<custom-ident>), none);
-  }
 
   /* See https://www.gfor.rest/blog/making-pwas-feel-native#overscroll-behavior */
   @media (display-mode: standalone) {
