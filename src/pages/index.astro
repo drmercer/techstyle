@@ -68,7 +68,13 @@
 
           <p>Code snippet:</p>
           <pre id="theme-output"></pre>
-          <!-- TODO "copy" and "download stylesheet" buttons -->
+
+          <footer>
+            <button type="button" id="copy">Copy</button>
+            <a href="/public/techstyle.css" download
+              >Download <code>techstyle.css</code></a
+            >
+          </footer>
         </form>
       </section>
 
@@ -243,6 +249,20 @@
       dark.checked = Math.random() < 0.5;
       invert.checked = Math.random() < 0.5;
       update();
+    };
+
+    const copy = document.querySelector("#copy");
+    copy.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(themeOutput.innerText.trim());
+        copy.innerText = "Copied!";
+      } catch (e) {
+        console.error("Failed to copy to clipboard", e);
+        copy.innerText = "Error :(";
+      }
+      setTimeout(() => {
+        copy.innerText = "Copy";
+      }, 1000);
     };
 
     function getColorHex(property) {
