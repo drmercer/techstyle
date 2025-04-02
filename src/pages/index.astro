@@ -251,7 +251,7 @@
     }
 
     function getColorHex(property) {
-      const raw = window.getComputedStyle(colorsensor).getPropertyValue(property);
+      const raw = window.getComputedStyle(sensor).getPropertyValue(property);
       // example: color(srgb 0.248018 0.41213 0.886475)
       const m = raw.match(/color\(srgb (\S+) (\S+) (\S+)\)/);
       if (!m) {
@@ -263,8 +263,8 @@
 
     function update() {
       document.documentElement.style.setProperty('--t-hue', hue.value)
-      document.documentElement.classList.toggle('t-swapped', invert.checked);
-      document.documentElement.classList.toggle('t-dark', dark.checked);
+      document.documentElement.style.setProperty('--t-swapped', invert.checked ? '1' : '');
+      document.documentElement.style.setProperty('color-scheme', dark.checked ? 'dark' : 'only light');
 
       const fg = getColorHex('color');
       const bg = getColorHex('background-color');

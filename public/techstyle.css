@@ -45,7 +45,10 @@ SOFTWARE.
   * {
     accent-color: var(--t-color-fg);
     /* default tap highlight color is based on the hue */
-    -webkit-tap-highlight-color: oklch(0.56 0.19 var(--t-hue) / .3);
+    -webkit-tap-highlight-color: light-dark(
+      oklch(0.56 0.19 var(--t-hue-light) / 0.3),
+      oklch(0.56 0.19 var(--t-hue-dark) / 0.3)
+    );
     /* this makes so many little things easier */
     box-sizing: border-box;
   }
@@ -55,8 +58,30 @@ SOFTWARE.
     --t-spacing-within: 5px;
     --t-spacing-around: calc(4 * var(--t-spacing-within));
     --t-hue: 266;
-    --t-color-fg: oklch(0.56 0.19 var(--t-hue));
-    --t-color-bg: white;
+    /* these allow you to have a different hue in dark mode, if desired */
+    --t-hue-light: var(--t-hue);
+    --t-hue-dark: var(--t-hue);
+    /* set this to 1 to swap the color to the bg instead of the fg */
+    --t-swapped: 0;
+
+    --t-color-fg: color-mix(
+      in oklch,
+      light-dark(
+        oklch(0.56 0.19 var(--t-hue-light)),
+        oklch(0.8 0.19 var(--t-hue-dark))
+      ),
+      light-dark(black, white) calc(var(--t-swapped) * 100%)
+    );
+    --t-color-bg: color-mix(
+      in oklch,
+      light-dark(white, #222),
+      light-dark(
+          oklch(0.8 0.19 var(--t-hue-light)),
+          oklch(0.45 0.19 var(--t-hue-dark))
+        )
+        calc(var(--t-swapped) * 100%)
+    );
+
     color: var(--t-color-fg);
     background-color: var(--t-color-bg);
     font-family: system-ui, sans-serif;
@@ -73,22 +98,8 @@ SOFTWARE.
 
     /* 100vw includes the scrollbar width, so we have to subtract it to compute the real viewport width. Plus we have overflow-x:clip just in case. */
     --t-viewport-width: calc(100vw - var(--t-scrollbar-width));
-  }
 
-  .t-dark {
-    --t-color-fg: oklch(0.8 0.19 var(--t-hue));
-    --t-color-bg: #222;
-    color-scheme: dark;
-  }
-
-  .t-swapped {
-    --t-color-fg: black;
-    --t-color-bg: oklch(0.8 0.19 var(--t-hue));
-  }
-
-  .t-swapped.t-dark {
-    --t-color-fg: white;
-    --t-color-bg: oklch(0.45 0.19 var(--t-hue));
+    color-scheme: light dark;
   }
 
   /* scrollbar styles */

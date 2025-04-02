@@ -16,9 +16,9 @@ An opinionated stylesheet for quickly building web apps that look "good enough t
 
 Simple theme:
 * Just three parameters to consider:
-  * A hue for the theme color. (Set via `--hue` at `<html>`.)
-  * Dark mode. (Enable by putting the `t-dark` class on `<html>`.)
-  * Whether to apply the color to the background or foreground. (Foreground is the default. Swap it by putting the `t-swap` class on `<html>`.)
+  * A hue for the theme color. (Set via `--t-hue` on `:root`.)
+  * Dark mode. (Set via `color-scheme: dark` on `:root`.)
+  * Whether to apply the color to the background or foreground. (Foreground is the default. Swap it by setting `--t-swapped: 1` on `:root`.)
 * Uses `oklch` for consistent visual lightness with any hue.
 * Try the "Randomize" button on [the website](https://techstyle.danmercer.net) to see a randomly chosen theme. In my opinion, it usually looks pretty good!
 
