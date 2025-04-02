@@ -1,153 +1,139 @@
 ---
 // nothing here yet
 ---
+
 <!doctype html>
 <html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <title>techstyle.css</title>
+    <meta
+      name="description"
+      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
+    />
+    <meta name="author" content="Dan Mercer" />
 
-<head>
-  <meta charset="UTF-8">
-	<meta name="generator" content={Astro.generator} />
-  <title>techstyle.css</title>
-  <meta name="description"
-    content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
-  <meta name="author" content="Dan Mercer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://danmercer.net/api/favicon?text=fff&bg=000"
+    />
+    <meta name="theme-color" content="#000000" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="https://danmercer.net/api/favicon?text=fff&bg=000">
-  <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="techstyle.css" />
 
-  <link rel="stylesheet" href="techstyle.css">
+    <meta property="og:title" content="techstyle.css" />
+    <meta
+      property="og:description"
+      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://techstyle.danmercer.net" />
+    <meta name="twitter:title" content="techstyle.css" />
+    <meta
+      name="twitter:description"
+      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
+    />
+  </head>
 
-  <meta property="og:title" content="techstyle.css">
-  <meta property="og:description"
-    content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://techstyle.danmercer.net">
-  <meta name="twitter:title" content="techstyle.css">
-  <meta name="twitter:description"
-    content="An opinionated stylesheet for quickly building web apps that look &quot;good enough to use&quot;">
-</head>
+  <body>
+    <header>
+      <a href="https://danmercer.net">Home</a>
+      <h1><code>techstyle.css</code></h1>
+      <a href="https://github.com/drmercer/techstyle">GitHub</a>
+    </header>
 
-<body>
-  <header>
-    <a href="https://danmercer.net">Home</a>
-    <h1><code>techstyle.css</code></h1>
-    <a href="https://github.com/drmercer/techstyle">GitHub</a>
-  </header>
-
-  <main>
-    <p>
-      Techstyle is an opinionated stylesheet for quickly building web apps that look &quot;good enough to
-      use.&quot;
-    </p>
-    <section>
-      <form class="t-card" aria-label="Theme settings">
-        <label>
-          <input type="range" id="hue" min="0" max="360">
-          Hue
-        </label>
-        <label>
-          <input type="checkbox" id="invert">
-          Swapped
-        </label>
-        <label>
-          <input type="checkbox" id="dark">
-          Dark
-        </label>
-        <button type="button" id="randomize">
-          Randomize
-        </button>
-
-        <!-- TODO generated theme output -->
-        <!-- TODO "copy" and "download stylesheet" buttons -->
-      </form>
-    </section>
-
-    <section>
-      <h2>
-        A list of cards
-      </h2>
-
-      <ul>
-        <li class="t-card">
-          Card one
-        </li>
-        <li class="t-card">
-          Card two
-        </li>
-        <li class="t-card">
-          Card three
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>
-        Side-by-side panels (if room)
-      </h2>
-
-      <div class="t-sidebyside">
-        <section>
-          <h3>First panel</h3>
-          <div class="t-card">
-            A card
-          </div>
-        </section>
-        <section>
-          <h3>Second panel</h3>
-          <div class="t-card">
-            Another card
-          </div>
-        </section>
-        <section>
-          <h3>Third panel</h3>
-          <div class="t-card">
-            One more card
-          </div>
-          <div class="t-card">
-            Another card
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section>
-      <h2>
-        Cards and form elements
-      </h2>
-      <form class="t-card" aria-label="Another example form" action="https://duckduckgo.com/" target="_blank">
-        <fieldset>
-          <input name="q" type="search" placeholder="Search DuckDuckGo"></input>
-          <button>
-            Go
-          </button>
-        </fieldset>
-        </form>
-
-        <form class="t-card" aria-label="Textarea demo">
+    <main>
+      <p>
+        Techstyle is an opinionated stylesheet for quickly building web apps
+        that look &quot;good enough to use.&quot;
+      </p>
+      <section>
+        <form class="t-card" aria-label="Theme settings">
           <label>
-            Multiline text (textarea):
-            <textarea></textarea>
-            </label>
+            <input type="range" id="hue" min="0" max="360" />
+            Hue
+          </label>
+          <label>
+            <input type="checkbox" id="invert" />
+            Swapped
+          </label>
+          <label>
+            <input type="checkbox" id="dark" />
+            Dark
+          </label>
+          <button type="button" id="randomize"> Randomize </button>
+
+          <!-- TODO generated theme output -->
+          <!-- TODO "copy" and "download stylesheet" buttons -->
+        </form>
+      </section>
+
+      <section>
+        <h2>A list of cards</h2>
+
+        <ul>
+          <li class="t-card">Card one</li>
+          <li class="t-card">Card two</li>
+          <li class="t-card">Card three</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Side-by-side panels (if room)</h2>
+
+        <div class="t-sidebyside">
+          <section>
+            <h3>First panel</h3>
+            <div class="t-card">A card</div>
+          </section>
+          <section>
+            <h3>Second panel</h3>
+            <div class="t-card">Another card</div>
+          </section>
+          <section>
+            <h3>Third panel</h3>
+            <div class="t-card">One more card</div>
+            <div class="t-card">Another card</div>
+          </section>
+        </div>
+      </section>
+
+      <section>
+        <h2>Cards and form elements</h2>
+        <form
+          class="t-card"
+          aria-label="Another example form"
+          action="https://duckduckgo.com/"
+          target="_blank"
+        >
           <fieldset>
-            <button type="reset">
-              Reset
-            </button>
-            <button type="reset">
-              Save
-            </button>
-            </fieldset>
+            <input name="q" type="search" placeholder="Search DuckDuckGo" />
+          </fieldset>
+          <button> Go </button>
+        </form>
+      </section>
+
+      <form class="t-card" aria-label="Textarea demo">
+        <label>
+          Multiline text (textarea):
+          <textarea></textarea>
+        </label>
+        <fieldset>
+          <button type="reset"> Reset </button>
+          <button type="reset"> Save </button>
+        </fieldset>
       </form>
 
       <div class="t-card" aria-label="A card containing an iframe">
         <iframe title="My Iframe" src="https://example.com"></iframe>
       </div>
-    </section>
+    </main>
 
     <section>
-      <h2>
-        A full-page section
-      </h2>
+      <h2>A full-page section</h2>
 
       <section class="t-fullheight">
         <div class="t-card">
@@ -157,9 +143,7 @@
     </section>
 
     <section>
-      <h2>
-        A full-page section with header and footer
-      </h2>
+      <h2>A full-page section with header and footer</h2>
 
       <section class="t-fullheight">
         <header>
@@ -184,9 +168,7 @@
             <span>This is the footer</span>
             <button popovertarget="demodialog">Open dialog</button>
             <dialog id="demodialog" popover="auto">
-              <p>
-                Hello, this is a dialog!
-              </p>
+              <p>Hello, this is a dialog!</p>
               <form method="dialog">
                 <footer>
                   <button autofocus type="submit">Cancel</button>
@@ -203,7 +185,9 @@
       <h2>Example application screens</h2>
 
       <ul>
-        <li><a href="./examples/landing.html">A landing page for a cool app</a></li>
+        <li>
+          <a href="./examples/landing.html">A landing page for a cool app</a>
+        </li>
       </ul>
     </section>
 
@@ -211,68 +195,85 @@
       <details>
         <summary><strong>Why the name "techstyle"?</strong></summary>
         <p>
-          It's a stylesheet that looks kind of techy. It's also a pun on textile - my last name, Mercer, comes from a word
-          meaning
-          "a textile merhant", so this is a way of living up to that heritage. 😆
+          It's a stylesheet that looks kind of techy. It's also a pun on textile
+          - my last name, Mercer, comes from a word meaning "a textile merhant",
+          so this is a way of living up to that heritage. 😆
         </p>
       </details>
     </small>
-
-  </main>
+  </body>
 
   <footer>
     <small>By <a href="https://danmercer.net">Dan Mercer</a></small>
   </footer>
 
-  <div id="colorsensor" style="display: none; color: rgb(from var(--t-color-fg) r g b); background-color: rgb(from var(--t-color-bg) r g b);"></div>
+  <div
+    id="colorsensor"
+    style="display: none; color: rgb(from var(--t-color-fg) r g b); background-color: rgb(from var(--t-color-bg) r g b);"
+  >
+  </div>
 
   <script>
-    const hue = document.querySelector('#hue');
+    const hue = document.querySelector("#hue");
     hue.value = Math.floor(Math.random() * 361);
     hue.oninput = update;
 
-    const invert = document.querySelector('#invert');
+    const invert = document.querySelector("#invert");
     invert.oninput = update;
 
-    const dark = document.querySelector('#dark');
-    dark.checked = !!window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
+    const dark = document.querySelector("#dark");
+    dark.checked = !!window.matchMedia?.("(prefers-color-scheme: dark)")
+      ?.matches;
     dark.oninput = update;
 
-    const sensor = document.querySelector('#colorsensor');
+    const sensor = document.querySelector("#colorsensor");
 
     update();
 
-    const randomize = document.querySelector('#randomize');
+    const randomize = document.querySelector("#randomize");
     randomize.onclick = () => {
       hue.value = Math.floor(Math.random() * 361);
       dark.checked = Math.random() < 0.5;
       invert.checked = Math.random() < 0.5;
       update();
-    }
+    };
 
     function getColorHex(property) {
       const raw = window.getComputedStyle(sensor).getPropertyValue(property);
       // example: color(srgb 0.248018 0.41213 0.886475)
       const m = raw.match(/color\(srgb (\S+) (\S+) (\S+)\)/);
       if (!m) {
-        console.error('unable to parse color', raw);
-        return '000000';
+        console.error("unable to parse color", raw);
+        return "000000";
       }
-      return m.slice(1).map(n => Math.max(0, Math.min(255, Math.round(n * 255))).toString(16).padStart(2, '0')).join('');
+      return m
+        .slice(1)
+        .map((n) =>
+          Math.max(0, Math.min(255, Math.round(n * 255)))
+            .toString(16)
+            .padStart(2, "0")
+        )
+        .join("");
     }
 
     function update() {
-      document.documentElement.style.setProperty('--t-hue', hue.value)
-      document.documentElement.style.setProperty('--t-swapped', invert.checked ? '1' : '');
-      document.documentElement.style.setProperty('color-scheme', dark.checked ? 'dark' : 'only light');
+      document.documentElement.style.setProperty("--t-hue", hue.value);
+      document.documentElement.style.setProperty(
+        "--t-swapped",
+        invert.checked ? "1" : ""
+      );
+      document.documentElement.style.setProperty(
+        "color-scheme",
+        dark.checked ? "dark" : "only light"
+      );
 
-      const fg = getColorHex('color');
-      const bg = getColorHex('background-color');
+      const fg = getColorHex("color");
+      const bg = getColorHex("background-color");
 
-      document.querySelector('link[rel="icon"]').href = `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
-      document.querySelector('meta[name=theme-color]').content = '#' + (invert.checked ? bg : fg);
+      document.querySelector('link[rel="icon"]').href =
+        `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
+      document.querySelector("meta[name=theme-color]").content =
+        "#" + (invert.checked ? bg : fg);
     }
   </script>
-</body>
-
 </html>

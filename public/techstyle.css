@@ -27,7 +27,6 @@ SOFTWARE.
 */
 
 @layer techstyle {
-
   @view-transition {
     navigation: auto;
   }
@@ -53,7 +52,7 @@ SOFTWARE.
     box-sizing: border-box;
   }
 
-  html {
+  :root {
     /* TODO why does overriding these only work if applied to `html`? */
     --t-spacing-within: 5px;
     --t-spacing-around: calc(4 * var(--t-spacing-within));
@@ -162,7 +161,7 @@ SOFTWARE.
       /* Full-width (.t-sidebyside also does this) */
       width: max(var(--t-viewport-width), 100%);
       position: relative;
-      left: calc((var(--t-viewport-width) - 100%) * -.5);
+      left: calc((var(--t-viewport-width) - 100%) * -0.5);
       /* used to use transform/translate here, but it breaks popover positioning */
 
       padding: var(--t-spacing-around) calc(2 * var(--t-spacing-around));
@@ -208,7 +207,7 @@ SOFTWARE.
   /* Button inputs */
   button,
   select,
-  input[type=submit],
+  input[type="submit"],
   input::file-selector-button {
     appearance: none;
     background: none;
@@ -243,7 +242,7 @@ SOFTWARE.
       -webkit-tap-highlight-color: transparent;
 
       &::before {
-        content: '\200b';
+        content: "\200b";
         position: absolute;
         /* inset is relative to the content box, not the border box, so we have to correct it */
         inset: calc(var(--border-width) * -1);
@@ -261,13 +260,13 @@ SOFTWARE.
 
   /* Text inputs */
   /* (I wish there was a cleaner way to do this...) */
-  input[type=text],
-  input[type=password],
-  input[type=email],
-  input[type=number],
-  input[type=search],
-  input[type=tel],
-  input[type=url],
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
   textarea {
     appearance: none;
     color: inherit;
@@ -283,7 +282,7 @@ SOFTWARE.
 
     &::placeholder {
       color: inherit;
-      opacity: .8;
+      opacity: 0.8;
       font-style: italic;
     }
 
@@ -343,7 +342,8 @@ SOFTWARE.
     min-height: min(65svh, 400px);
   }
 
-  dialog, [popover] {
+  dialog,
+  [popover] {
     width: 300px;
     max-width: 80%;
     background-color: var(--t-color-bg);
@@ -360,7 +360,8 @@ SOFTWARE.
       margin: 0;
       margin-block: calc(var(--t-spacing-within) / 2);
       position-area: bottom span-all;
-      position-try-fallbacks: bottom span-right, bottom span-left, top span-right, top span-left;
+      position-try-fallbacks: bottom span-right, bottom span-left,
+        top span-right, top span-left;
     }
   }
 
@@ -378,7 +379,9 @@ SOFTWARE.
     /* list of cards */
     list-style: none;
   }
-  .t-card, dialog, [popover] {
+  .t-card,
+  dialog,
+  [popover] {
     color: inherit;
     border: 2px solid currentColor;
     border-radius: var(--t-spacing-within);
@@ -418,7 +421,7 @@ SOFTWARE.
     /* Full-width (headers and footers also do this) */
     width: max(var(--t-viewport-width), 100%);
     position: relative;
-    left: calc((var(--t-viewport-width) - 100%) * -.5);
+    left: calc((var(--t-viewport-width) - 100%) * -0.5);
     /* used to use transform/translate here, but it breaks popover positioning */
 
     padding-inline: var(--t-spacing-around);
@@ -444,14 +447,14 @@ SOFTWARE.
 
     /* If no header, put a pseudoelement in that spot in the flex arrangement */
     &:not(:has(> header:first-child))::before {
-      content: '\200b';
+      content: "\200b";
       width: 0;
       height: 0;
     }
 
     /* If no footer, put a pseudoelement in that spot in the flex arrangement */
     &:not(:has(> footer:last-child))::after {
-      content: '\200b';
+      content: "\200b";
       width: 0;
       height: 0;
     }
