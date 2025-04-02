@@ -121,6 +121,14 @@ SOFTWARE.
     }
   }
 
+  /* add your hue to any element! iframes, emojis, you name it!*/
+  /* WARNING: always uses `--t-hue`, so if your `--t-hue-dark` and `--t-hue-light` are different, don't use this */
+  .t-tinted {
+    /* approximate conversion from oklch hue to hsl hue */
+    --t-hue-hsl: calc(var(--t-hue) + 20);
+    filter: sepia(1) hue-rotate(calc(var(--t-hue-hsl) * 1deg - 97deg));
+  }
+
   /* === base classless styles === */
 
   :target {
@@ -146,6 +154,7 @@ SOFTWARE.
     /* Apply max-width everywhere (except some elements escape this - see "full width" snippets) */
     max-width: clamp(350px, 60vw, 700px);
     margin-inline: auto;
+    display: block;
   }
 
   header,

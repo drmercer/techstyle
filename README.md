@@ -33,6 +33,7 @@ Classes:
 * `t-sidebyside`: arrange content in side-by-side panels (wrap if there is not enough room).
 * `t-fullheight`: make a section that matches the height of the viewport, with vertically centered content. Great for landing pages and some app UIs.
   * Can include a `<header>` and/or `<footer>`, which _won't_ be vertically centered.
+* `t-tinted`: apply your theme hue to the element - works on anything! images, emojis, iframes, etc
 
 Everything is in a CSS layer, so if you want to override a style with your own CSS, it should be pretty easy. 🙂
 
