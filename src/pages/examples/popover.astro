@@ -1,0 +1,101 @@
+---
+// nothing here yet
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techstyle example: landing page</title>
+    <meta
+      name="description"
+      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
+    />
+    <meta name="author" content="Dan Mercer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../techstyle.css" />
+    <meta property="og:title" content="techstyle example: landing page" />
+    <meta
+      property="og:description"
+      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://techstyle.danmercer.net" />
+    <meta name="twitter:title" content="techstyle example: landing page" />
+    <meta
+      name="twitter:description"
+      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
+    />
+    <style>
+      html {
+        --t-hue: 65;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Popover demo</h1>
+    </header>
+    <div class="t-card">
+      <button popovertarget="demopopover1">Open popover</button>
+      <div popover id="demopopover1">
+        This is a popover
+        <ul>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-card">
+      <header>
+        <span>Card header</span>
+        <button popovertarget="demopopover2">Open popover</button>
+        <div popover id="demopopover2">
+          This is a popover
+          <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+          </ul>
+        </div>
+      </header>
+    </div>
+    <section class="t-fullheight">
+      <header>
+        <span>This is the header</span>
+        <div>
+          <button popovertarget="demopopover3">Open popover</button>
+          <div popover id="demopopover3">
+            This is a popover
+            <ul>
+              <li>One</li>
+              <li>Two</li>
+              <li>Three</li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="t-card">
+        A vertically centered card in the full-page section
+      </div>
+      <footer>
+        <div>
+          <span>This is the footer</span>
+          <button popovertarget="demodialog">Open dialog</button>
+          <dialog id="demodialog" popover="auto">
+            <p>Hello, this is a dialog!</p>
+            <form method="dialog">
+              <footer>
+                <button autofocus type="submit">Cancel</button>
+                <button type="submit">Ok</button>
+              </footer>
+            </form>
+          </dialog>
+        </div>
+      </footer>
+    </section>
+  </body>
+</html>

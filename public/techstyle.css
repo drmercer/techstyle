@@ -70,6 +70,9 @@ SOFTWARE.
     /* prevents headers/footers from causing horizontal scroll */
     overflow-x: clip;
     scroll-behavior: smooth;
+
+    /* 100vw includes the scrollbar width, so we have to subtract it to compute the real viewport width. Plus we have overflow-x:clip just in case. */
+    --t-viewport-width: calc(100vw - var(--t-scrollbar-width));
   }
 
   .t-dark {
@@ -145,12 +148,11 @@ SOFTWARE.
 
     /* Make footers/headers full-page, unless they have a container */
     &:not(.t-sidebyside *, .t-card *, dialog *) {
-      /* Full-width, with some padding (.t-sidebyside also does this) */
-      /* 100vw includes the scrollbar width, so we have to subtract it here. Plus we have overflow-x:clip just in case. */
-      width: max(calc(100vw - var(--t-scrollbar-width)), 100%);
+      /* Full-width (.t-sidebyside also does this) */
+      width: max(var(--t-viewport-width), 100%);
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+      left: calc((var(--t-viewport-width) - 100%) * -.5);
+      /* used to use transform/translate here, but it breaks popover positioning */
 
       padding: var(--t-spacing-around) calc(2 * var(--t-spacing-around));
     }
@@ -339,6 +341,17 @@ SOFTWARE.
     background-color: var(--t-color-bg);
     opacity: 0.9;
   }
+  @supports (position-area: bottom) {
+    [popover] {
+      position: fixed;
+      inset: unset;
+      width: unset;
+      margin: 0;
+      margin-block: calc(var(--t-spacing-within) / 2);
+      position-area: bottom span-all;
+      position-try-fallbacks: bottom span-right, bottom span-left, top span-right, top span-left;
+    }
+  }
 
   summary {
     cursor: pointer;
@@ -391,12 +404,12 @@ SOFTWARE.
   .t-sidebyside {
     margin: var(--t-spacing-around) 0;
 
-    /* Full-width, with some padding (.t-sidebyside also does this) */
-    /* 100vw includes the scrollbar width, so we have to subtract it here. Plus we have overflow-x:clip just in case. */
-    width: max(calc(100vw - var(--t-scrollbar-width)), 100%);
+    /* Full-width (headers and footers also do this) */
+    width: max(var(--t-viewport-width), 100%);
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: calc((var(--t-viewport-width) - 100%) * -.5);
+    /* used to use transform/translate here, but it breaks popover positioning */
+
     padding-inline: var(--t-spacing-around);
 
     /* Arrange contents side-by-side */
