@@ -66,7 +66,8 @@
           </label>
           <button type="button" id="randomize"> Randomize </button>
 
-          <!-- TODO generated theme output -->
+          <p>Code snippet:</p>
+          <pre id="theme-output"></pre>
           <!-- TODO "copy" and "download stylesheet" buttons -->
         </form>
       </section>
@@ -226,6 +227,8 @@
       ?.matches;
     dark.oninput = update;
 
+    const themeOutput = document.querySelector("#theme-output");
+
     const sensor = document.querySelector("#colorsensor");
 
     update();
@@ -257,23 +260,36 @@
     }
 
     function update() {
-      document.documentElement.style.setProperty("--t-hue", hue.value);
-      document.documentElement.style.setProperty(
-        "--t-swapped",
-        invert.checked ? "1" : ""
-      );
-      document.documentElement.style.setProperty(
-        "color-scheme",
-        dark.checked ? "dark" : "only light"
-      );
+      const h = hue.value;
+      const s = invert.checked ? "1" : "";
+      const d = dark.checked ? "dark" : "only light";
+      document.documentElement.style.setProperty("--t-hue", h);
+      document.documentElement.style.setProperty("--t-swapped", s);
+      document.documentElement.style.setProperty("color-scheme", d);
 
       const fg = getColorHex("color");
       const bg = getColorHex("background-color");
+      const iconUrl = `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
 
-      document.querySelector('link[rel="icon"]').href =
-        `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
-      document.querySelector("meta[name=theme-color]").content =
-        "#" + (invert.checked ? bg : fg);
+      document.querySelector('link[rel="icon"]').href = iconUrl;
+      const themeColor = "#" + (invert.checked ? bg : fg);
+      document.querySelector("meta[name=theme-color]").content = themeColor;
+
+      themeOutput.innerText = `
+<!-- download and host the stylesheet yourself: -->
+<link rel="stylesheet" href="/techstyle.css" />
+<!-- set your theme: -->
+<style>
+  --t-hue: ${h};
+  color-scheme: ${d};
+  ${s ? "--t-swapped: 1;" : ""}
+</style>
+<meta name="theme-color" content="${themeColor}"></meta>
+<!-- "DM" favicon - probably leave this part out if you're not Dan :) -->
+<link rel="icon" href="${iconUrl}"></link>
+      `
+        .trim()
+        .replaceAll(/\n\s+\n/g, "\n"); // replace blank lines
     }
   </script>
 </html>
