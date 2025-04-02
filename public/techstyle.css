@@ -52,11 +52,8 @@ SOFTWARE.
     box-sizing: border-box;
   }
 
-  :root {
-    /* TODO why does overriding these only work if applied to `html`? */
-    --t-spacing-within: 5px;
-    --t-spacing-around: calc(4 * var(--t-spacing-within));
-    --t-hue: 266;
+  /* you should set --t-hue, --t-swapped, and color-scheme (as desired) on these elements  */
+  :root, .t-theme-root {
     /* these allow you to have a different hue in dark mode, if desired */
     --t-hue-light: var(--t-hue);
     --t-hue-dark: var(--t-hue);
@@ -83,6 +80,12 @@ SOFTWARE.
 
     color: var(--t-color-fg);
     background-color: var(--t-color-bg);
+  }
+
+  :root {
+    --t-hue: 266;
+    --t-spacing-within: 5px;
+    --t-spacing-around: calc(4 * var(--t-spacing-within));
     font-family: system-ui, sans-serif;
 
     /* avoids runaway text lines */
@@ -222,7 +225,7 @@ SOFTWARE.
     background: none;
     font: inherit;
     font-size: inherit;
-    color: inherit;
+    color: var(--t-color-fg);
     --border-width: 2px;
     border: var(--border-width) solid currentColor;
     border-radius: var(--t-spacing-within);
@@ -278,7 +281,7 @@ SOFTWARE.
   input[type="url"],
   textarea {
     appearance: none;
-    color: inherit;
+    color: var(--t-color-fg);
     background: inherit;
     font: inherit;
     font-family: monospace;
@@ -290,7 +293,7 @@ SOFTWARE.
     width: 100%;
 
     &::placeholder {
-      color: inherit;
+      color: var(--t-color-fg);
       opacity: 0.8;
       font-style: italic;
     }
@@ -333,7 +336,7 @@ SOFTWARE.
   }
 
   a {
-    color: inherit;
+    color: var(--t-color-fg);
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
 
@@ -391,7 +394,7 @@ SOFTWARE.
   .t-card,
   dialog,
   [popover] {
-    color: inherit;
+    color: var(--t-color-fg);
     border: 2px solid currentColor;
     border-radius: var(--t-spacing-within);
     padding: var(--t-spacing-within);
@@ -414,6 +417,7 @@ SOFTWARE.
       content: attr(aria-label);
       background: var(--t-color-bg);
       padding-inline: 2px;
+      border-radius: 2px;
     }
   }
 
