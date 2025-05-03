@@ -157,7 +157,6 @@ SOFTWARE.
     /* Apply max-width everywhere (except some elements escape this - see "full width" snippets) */
     max-width: clamp(350px, 60vw, 700px);
     margin-inline: auto;
-    display: block;
   }
 
   header,
