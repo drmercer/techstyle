@@ -309,9 +309,11 @@
 <link rel="stylesheet" href="/techstyle.css" />
 <!-- set your theme: -->
 <style>
-  --t-hue: ${h};
-  color-scheme: ${d};
-  ${s ? "--t-swapped: 1;" : ""}
+  :root {
+    --t-hue: ${h};
+    color-scheme: ${d};
+    ${s ? "--t-swapped: 1;" : ""}
+  }
 </style>
 <meta name="theme-color" content="${themeColor}"></meta>
 <!-- "DM" favicon - probably leave this part out if you're not Dan :) -->
