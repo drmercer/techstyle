@@ -1,18 +1,13 @@
 ---
-// nothing here yet
+import OgTags from "./_OgTags.astro";
 ---
 
 <!doctype html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8" />
-    <meta name="generator" content={Astro.generator} />
+
     <title>techstyle.css</title>
-    <meta
-      name="description"
-      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
-    />
-    <meta name="author" content="Dan Mercer" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -21,21 +16,9 @@
       href="https://danmercer.net/api/favicon?text=fff&bg=000"
     />
     <meta name="theme-color" content="#000000" />
-
     <link rel="stylesheet" href="techstyle.css" />
 
-    <meta property="og:title" content="techstyle.css" />
-    <meta
-      property="og:description"
-      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://techstyle.danmercer.net" />
-    <meta name="twitter:title" content="techstyle.css" />
-    <meta
-      name="twitter:description"
-      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
-    />
+    <OgTags />
   </head>
 
   <body>
@@ -217,94 +200,92 @@
         </details>
       </small>
     </div>
-  </body>
+    <footer>
+      <small>By <a href="https://danmercer.net">Dan Mercer</a></small>
+    </footer>
 
-  <footer>
-    <small>By <a href="https://danmercer.net">Dan Mercer</a></small>
-  </footer>
+    <div
+      id="colorsensor"
+      style="display: none; color: rgb(from var(--t-color-fg) r g b); background-color: rgb(from var(--t-color-bg) r g b);"
+    >
+    </div>
 
-  <div
-    id="colorsensor"
-    style="display: none; color: rgb(from var(--t-color-fg) r g b); background-color: rgb(from var(--t-color-bg) r g b);"
-  >
-  </div>
-
-  <script>
-    const hue = document.querySelector("#hue");
-    hue.value = Math.floor(Math.random() * 361);
-    hue.oninput = update;
-
-    const invert = document.querySelector("#invert");
-    invert.oninput = update;
-
-    const dark = document.querySelector("#dark");
-    dark.checked = !!window.matchMedia?.("(prefers-color-scheme: dark)")
-      ?.matches;
-    dark.oninput = update;
-
-    const themeOutput = document.querySelector("#theme-output");
-
-    const sensor = document.querySelector("#colorsensor");
-
-    update();
-
-    const randomize = document.querySelector("#randomize");
-    randomize.onclick = () => {
+    <script>
+      const hue = document.querySelector("#hue");
       hue.value = Math.floor(Math.random() * 361);
-      dark.checked = Math.random() < 0.5;
-      invert.checked = Math.random() < 0.5;
+      hue.oninput = update;
+
+      const invert = document.querySelector("#invert");
+      invert.oninput = update;
+
+      const dark = document.querySelector("#dark");
+      dark.checked = !!window.matchMedia?.("(prefers-color-scheme: dark)")
+        ?.matches;
+      dark.oninput = update;
+
+      const themeOutput = document.querySelector("#theme-output");
+
+      const sensor = document.querySelector("#colorsensor");
+
       update();
-    };
 
-    const copy = document.querySelector("#copy");
-    copy.onclick = async () => {
-      try {
-        await navigator.clipboard.writeText(themeOutput.innerText.trim());
-        copy.innerText = "Copied!";
-      } catch (e) {
-        console.error("Failed to copy to clipboard", e);
-        copy.innerText = "Error :(";
+      const randomize = document.querySelector("#randomize");
+      randomize.onclick = () => {
+        hue.value = Math.floor(Math.random() * 361);
+        dark.checked = Math.random() < 0.5;
+        invert.checked = Math.random() < 0.5;
+        update();
+      };
+
+      const copy = document.querySelector("#copy");
+      copy.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(themeOutput.innerText.trim());
+          copy.innerText = "Copied!";
+        } catch (e) {
+          console.error("Failed to copy to clipboard", e);
+          copy.innerText = "Error :(";
+        }
+        setTimeout(() => {
+          copy.innerText = "Copy";
+        }, 1000);
+      };
+
+      function getColorHex(property) {
+        const raw = window.getComputedStyle(sensor).getPropertyValue(property);
+        // example: color(srgb 0.248018 0.41213 0.886475)
+        const m = raw.match(/color\(srgb (\S+) (\S+) (\S+)\)/);
+        if (!m) {
+          console.error("unable to parse color", raw);
+          return "000000";
+        }
+        return m
+          .slice(1)
+          .map((n) =>
+            Math.max(0, Math.min(255, Math.round(n * 255)))
+              .toString(16)
+              .padStart(2, "0")
+          )
+          .join("");
       }
-      setTimeout(() => {
-        copy.innerText = "Copy";
-      }, 1000);
-    };
 
-    function getColorHex(property) {
-      const raw = window.getComputedStyle(sensor).getPropertyValue(property);
-      // example: color(srgb 0.248018 0.41213 0.886475)
-      const m = raw.match(/color\(srgb (\S+) (\S+) (\S+)\)/);
-      if (!m) {
-        console.error("unable to parse color", raw);
-        return "000000";
-      }
-      return m
-        .slice(1)
-        .map((n) =>
-          Math.max(0, Math.min(255, Math.round(n * 255)))
-            .toString(16)
-            .padStart(2, "0")
-        )
-        .join("");
-    }
+      function update() {
+        const h = hue.value;
+        const s = invert.checked ? "1" : "";
+        const d = dark.checked ? "dark" : "only light";
+        document.documentElement.style.setProperty("--t-hue", h);
+        document.documentElement.style.setProperty("--t-swapped", s);
+        document.documentElement.style.setProperty("color-scheme", d);
 
-    function update() {
-      const h = hue.value;
-      const s = invert.checked ? "1" : "";
-      const d = dark.checked ? "dark" : "only light";
-      document.documentElement.style.setProperty("--t-hue", h);
-      document.documentElement.style.setProperty("--t-swapped", s);
-      document.documentElement.style.setProperty("color-scheme", d);
+        const fg = getColorHex("color");
+        const bg = getColorHex("background-color");
+        const iconUrl = `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
 
-      const fg = getColorHex("color");
-      const bg = getColorHex("background-color");
-      const iconUrl = `https://danmercer.net/api/favicon?text=${fg}&bg=${bg}`;
+        document.querySelector('link[rel="icon"]').href = iconUrl;
+        const themeColor = "#" + (invert.checked ? bg : fg);
+        document.querySelector("meta[name=theme-color]").content = themeColor;
 
-      document.querySelector('link[rel="icon"]').href = iconUrl;
-      const themeColor = "#" + (invert.checked ? bg : fg);
-      document.querySelector("meta[name=theme-color]").content = themeColor;
-
-      themeOutput.innerText = `
+        themeOutput.innerText = `
 <!-- download and host the stylesheet yourself: -->
 <link rel="stylesheet" href="/techstyle.css" />
 <!-- set your theme: -->
@@ -319,8 +300,9 @@
 <!-- "DM" favicon - probably leave this part out if you're not Dan :) -->
 <link rel="icon" href="${iconUrl}"></link>
       `
-        .trim()
-        .replaceAll(/\n\s+\n/g, "\n"); // replace blank lines
-    }
-  </script>
+          .trim()
+          .replaceAll(/\n\s+\n/g, "\n"); // replace blank lines
+      }
+    </script>
+  </body>
 </html>

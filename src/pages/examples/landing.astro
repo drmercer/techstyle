@@ -1,38 +1,24 @@
 ---
-// nothing here yet
+import OgTags from "../_OgTags.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>techstyle example: landing page</title>
-    <meta
-      name="description"
-      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
-    />
-    <meta name="author" content="Dan Mercer" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="/techstyle.css" />
-    <meta property="og:title" content="techstyle example: landing page" />
-    <meta
-      property="og:description"
-      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://techstyle.danmercer.net" />
-    <meta name="twitter:title" content="techstyle example: landing page" />
-    <meta
-      name="twitter:description"
-      content='An opinionated stylesheet for quickly building web apps that look "good enough to use"'
-    />
     <style>
       html {
         --t-hue: 6;
         --t-swapped: 1;
       }
     </style>
+
+    <OgTags />
   </head>
 
   <body>
