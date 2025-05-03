@@ -35,9 +35,52 @@
   </head>
 
   <body>
-    <header>
-      <h1>Popover demo</h1>
-    </header>
+    <section class="t-fullheight">
+      <header>
+        <span>This is the header of a full-page section</span>
+        <h1>Popover demo</h1>
+        <div>
+          <button popovertarget="demopopover3">Open popover</button>
+          <div popover id="demopopover3">
+            This is a popover
+            <ul>
+              <li>One</li>
+              <li>Two</li>
+              <li>Three</li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="t-card">
+        A vertically centered card in the full-page section
+      </div>
+      <footer>
+        <div>
+          <span>This is the footer of a full-page section</span>
+          <button id="opendialog">Open dialog</button>
+          <dialog id="demodialog">
+            <p>Hello, this is a dialog!</p>
+            <form method="dialog">
+              <footer>
+                <button autofocus type="submit">Cancel</button>
+                <button type="submit">Ok</button>
+              </footer>
+            </form>
+          </dialog>
+          <script>
+            const dialog = document.getElementById(
+              "demodialog"
+            ) as HTMLDialogElement;
+            const opendialog = document.getElementById(
+              "opendialog"
+            ) as HTMLButtonElement;
+
+            opendialog.onclick = () => dialog.showModal();
+          </script>
+        </div>
+      </footer>
+    </section>
+
     <div class="t-card">
       <button popovertarget="demopopover1">Open popover</button>
       <div popover id="demopopover1">
@@ -63,39 +106,13 @@
         </div>
       </header>
     </div>
-    <section class="t-fullheight">
-      <header>
-        <span>This is the header</span>
-        <div>
-          <button popovertarget="demopopover3">Open popover</button>
-          <div popover id="demopopover3">
-            This is a popover
-            <ul>
-              <li>One</li>
-              <li>Two</li>
-              <li>Three</li>
-            </ul>
-          </div>
-        </div>
-      </header>
-      <div class="t-card">
-        A vertically centered card in the full-page section
-      </div>
-      <footer>
-        <div>
-          <span>This is the footer</span>
-          <button popovertarget="demodialog">Open dialog</button>
-          <dialog id="demodialog" popover="auto">
-            <p>Hello, this is a dialog!</p>
-            <form method="dialog">
-              <footer>
-                <button autofocus type="submit">Cancel</button>
-                <button type="submit">Ok</button>
-              </footer>
-            </form>
-          </dialog>
-        </div>
-      </footer>
-    </section>
+
+    <footer>
+      <span
+        >This is just a demo of <a href="../index.html"
+          ><code>techstyle.css</code></a
+        ></span
+      >
+    </footer>
   </body>
 </html>
