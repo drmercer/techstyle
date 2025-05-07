@@ -1,59 +1,44 @@
 ---
-import OgTags from "../_OgTags.astro";
+import ExamplePage from "./_ExamplePage.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>techstyle example: landing page</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="/techstyle.css" />
-    <style>
-      html {
-        --t-hue: 6;
-        --t-swapped: 1;
-      }
-    </style>
-
-    <OgTags />
-  </head>
-
-  <body>
-    <section class="t-fullheight">
-      <hgroup>
-        <h1>A Cool App</h1>
-        <p>☺ This cool app will solve all your problems</p>
-      </hgroup>
-      <footer>
-        <span>↡ Scroll to read more! ↡</span>
-      </footer>
-    </section>
-    <section>
-      <h2>Awesome features</h2>
-      <ul>
-        <li class="t-card">
-          <h3>✔ Doesn't actually exist</h3>
-          <p>Means it won't distract you from stuff that actually matters</p>
-        </li>
-        <li class="t-card">
-          <h3>✔ 0MB installed size</h3>
-          <p>You can't install it, so installing it takes no time</p>
-        </li>
-        <li class="t-card">
-          <h3>✔ Makes you want to build your own app</h3>
-          <p>Building apps is fun</p>
-        </li>
-      </ul>
-    </section>
+<ExamplePage
+  title="techstyle example: landing page"
+  hue={6}
+  swapped={true}
+  themeColor="#ff82b9"
+>
+  <section class="t-fullheight">
+    <hgroup>
+      <h1>A Cool App</h1>
+      <p>☺ This cool app will solve all your problems</p>
+    </hgroup>
     <footer>
-      <span
-        >This is just a demo of <a href="../index.html"
-          ><code>techstyle.css</code></a
-        ></span
-      >
+      <span>⬇ Scroll to read more! ⬇</span>
     </footer>
-  </body>
-</html>
+  </section>
+  <section>
+    <h2>Awesome features</h2>
+    <ul>
+      <li class="t-card">
+        <h3>✔ Doesn't actually exist</h3>
+        <p>Means it won't distract you from stuff that actually matters</p>
+      </li>
+      <li class="t-card">
+        <h3>✔ 0MB installed size</h3>
+        <p>You can't install it, so installing it takes no time</p>
+      </li>
+      <li class="t-card">
+        <h3>✔ Makes you want to build your own app</h3>
+        <p>Building apps is fun</p>
+      </li>
+    </ul>
+  </section>
+  <footer>
+    <span>
+      This is just a demo of <a href="../index.html"
+        ><code>techstyle.css</code></a
+      >
+    </span>
+  </footer>
+</ExamplePage>

@@ -1,0 +1,43 @@
+---
+import OgTags from "../_OgTags.astro";
+
+export interface Props {
+  title: string;
+  hue: number;
+  swapped?: boolean;
+  themeColor?: string;
+}
+
+const { title, hue, swapped, themeColor } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/techstyle.css" />
+    <style define:vars={{ hue, swapped: swapped ? 1 : 0 }}>
+      :root {
+        --t-hue: var(--hue);
+        --t-swapped: var(--swapped)};
+      }
+    </style>
+    {themeColor && (
+      <>
+        <meta name="theme-color" content={themeColor} />
+        <link
+          rel="icon"
+          href={`https://danmercer.net/api/favicon?text=000000&bg=${themeColor.slice(1)}`}
+        />
+      </>
+    )}
+    <OgTags />
+  </head>
+
+  <body>
+    <slot></slot>
+  </body>
+</html>

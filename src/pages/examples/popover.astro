@@ -1,94 +1,20 @@
 ---
-import OgTags from "../_OgTags.astro";
+import ExamplePage from "./_ExamplePage.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>techstyle example: landing page</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../techstyle.css" />
-    <style>
-      :root {
-        --t-hue: 151;
-        color-scheme: only light;
-        --t-swapped: 1;
-      }
-    </style>
-    <meta name="theme-color" content="#43df7b" />
-    <link
-      rel="icon"
-      href="https://danmercer.net/api/favicon?text=000000&bg=43df7b"
-    />
-
-    <OgTags />
-  </head>
-
-  <body>
-    <section class="t-fullheight">
-      <header>
-        <span>This is the header of a full-page section</span>
-        <h1>Popover demo</h1>
-        <div>
-          <button popovertarget="demopopover3">Open popover</button>
-          <div popover id="demopopover3">
-            This is a popover
-            <ul>
-              <li>One</li>
-              <li>Two</li>
-              <li>Three</li>
-            </ul>
-          </div>
-        </div>
-      </header>
-      <div class="t-card">
-        A vertically centered card in the full-page section
-      </div>
-      <footer>
-        <div>
-          <span>This is the footer of a full-page section</span>
-          <button id="opendialog">Open dialog</button>
-          <dialog id="demodialog">
-            <p>Hello, this is a dialog!</p>
-            <form method="dialog">
-              <footer>
-                <button autofocus type="submit">Cancel</button>
-                <button type="submit">Ok</button>
-              </footer>
-            </form>
-          </dialog>
-          <script>
-            const dialog = document.getElementById(
-              "demodialog"
-            ) as HTMLDialogElement;
-            const opendialog = document.getElementById(
-              "opendialog"
-            ) as HTMLButtonElement;
-
-            opendialog.onclick = () => dialog.showModal();
-          </script>
-        </div>
-      </footer>
-    </section>
-
-    <div class="t-card">
-      <button popovertarget="demopopover1">Open popover</button>
-      <div popover id="demopopover1">
-        This is a popover
-        <ul>
-          <li>One</li>
-          <li>Two</li>
-          <li>Three</li>
-        </ul>
-      </div>
-    </div>
-    <div class="t-card">
-      <header>
-        <span>Card header</span>
-        <button popovertarget="demopopover2">Open popover</button>
-        <div popover id="demopopover2">
+<ExamplePage
+  title="techstyle example: popover demo"
+  hue={151}
+  swapped={true}
+  themeColor="#43df7b"
+>
+  <section class="t-fullheight">
+    <header>
+      <span>This is the header of a full-page section</span>
+      <h1>Popover demo</h1>
+      <div>
+        <button popovertarget="demopopover3">Open popover</button>
+        <div popover id="demopopover3">
           This is a popover
           <ul>
             <li>One</li>
@@ -96,15 +22,69 @@ import OgTags from "../_OgTags.astro";
             <li>Three</li>
           </ul>
         </div>
-      </header>
+      </div>
+    </header>
+    <div class="t-card">
+      A vertically centered card in the full-page section
     </div>
-
     <footer>
-      <span
-        >This is just a demo of <a href="../index.html"
-          ><code>techstyle.css</code></a
-        ></span
-      >
+      <div>
+        <span>This is the footer of a full-page section</span>
+        <button id="opendialog">Open dialog</button>
+        <dialog id="demodialog">
+          <p>Hello, this is a dialog!</p>
+          <form method="dialog">
+            <footer>
+              <button autofocus type="submit">Cancel</button>
+              <button type="submit">Ok</button>
+            </footer>
+          </form>
+        </dialog>
+        <script>
+          const dialog = document.getElementById(
+            "demodialog"
+          ) as HTMLDialogElement;
+          const opendialog = document.getElementById(
+            "opendialog"
+          ) as HTMLButtonElement;
+
+          opendialog.onclick = () => dialog.showModal();
+        </script>
+      </div>
     </footer>
-  </body>
-</html>
+  </section>
+
+  <div class="t-card">
+    <button popovertarget="demopopover1">Open popover</button>
+    <div popover id="demopopover1">
+      This is a popover
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    </div>
+  </div>
+  <div class="t-card">
+    <header>
+      <span>Card header</span>
+      <button popovertarget="demopopover2">Open popover</button>
+      <div popover id="demopopover2">
+        This is a popover
+        <ul>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+  <footer>
+    <span>
+      This is just a demo of <a href="../index.html"
+        ><code>techstyle.css</code></a
+      >
+    </span>
+  </footer>
+</ExamplePage>
