@@ -1,0 +1,36 @@
+---
+import ExamplePage from "./_ExamplePage.astro";
+---
+
+<ExamplePage
+  title="OneTask"
+  hue={200}
+  swapped={false}
+  themeColor="#0091a2"
+  bodyClass="t-fullheight"
+>
+  <header>
+    <h1>OneTask</h1>
+    <button><span class="t-tinted">👤</span> My Account</button>
+  </header>
+
+  <main>
+    <div class="t-card" aria-label="My Current Task">
+      <p style="font-size: 2em; text-align: center">
+        <a href="https://danmercer.net/p/focus-first-tech" target="_blank">
+          Read that cool essay I found
+        </a>
+      </p>
+      <footer>
+        <button>Done</button>
+        <button popovertarget="actions-menu">Actions</button>
+        <menu id="actions-menu" popover>
+          <li><button>Edit</button></li>
+          <li><button>Delete</button></li>
+          <li><button>Snooze</button></li>
+          <li><button>Mini view</button></li>
+        </menu>
+      </footer>
+    </div>
+  </main>
+</ExamplePage>

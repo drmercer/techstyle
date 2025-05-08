@@ -5,7 +5,8 @@
       "label": "Run Dev Server",
       "type": "npm",
       "script": "dev",
-      "detail": "Runs the development server using Astro."
+      "detail": "Runs the development server using Astro.",
+      "problemMatcher": []
     },
     {
       "label": "Build Project",

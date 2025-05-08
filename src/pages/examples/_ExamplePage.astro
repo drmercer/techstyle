@@ -6,9 +6,14 @@ export interface Props {
   hue: number;
   swapped?: boolean;
   themeColor?: string;
+  bodyClass?: string;
 }
 
-const { title, hue, swapped, themeColor } = Astro.props;
+const { title, hue, swapped, themeColor = '', bodyClass } = Astro.props;
+
+// approximation. Eventually I'll port the theme generator to server-side code so I can generate the correct favicon based on the theme.
+const favicon = 'https://danmercer.net/api/favicon?' + (swapped ? `text=000000&bg=${themeColor.slice(1)}` : `text=${themeColor.slice(1)}&bg=ffffff`);
+
 ---
 
 <!doctype html>
@@ -30,14 +35,14 @@ const { title, hue, swapped, themeColor } = Astro.props;
         <meta name="theme-color" content={themeColor} />
         <link
           rel="icon"
-          href={`https://danmercer.net/api/favicon?text=000000&bg=${themeColor.slice(1)}`}
+          href={favicon}
         />
       </>
     )}
     <OgTags />
   </head>
 
-  <body>
+  <body class={bodyClass}>
     <slot></slot>
   </body>
 </html>
