@@ -1,0 +1,121 @@
+---
+import ExamplePage from "./_ExamplePage.astro";
+---
+
+<ExamplePage
+  title="OneTask"
+  hue={200}
+  swapped={false}
+  themeColor="#0091a2"
+  bodyClass="t-fullheight"
+>
+  <header>
+    <h1>OneTask</h1>
+    <button><span class="t-tinted">👤</span> My Account</button>
+  </header>
+
+  <main class="t-sidebyside">
+    <div class="t-card" aria-label="My Current Task">
+      <p style="font-size: 2em; text-align: center">Plan out my day</p>
+      <footer>
+        <button>Done</button>
+        <button popovertarget="actions-menu">Actions</button>
+        <menu id="actions-menu" popover>
+          <li><button>Edit</button></li>
+          <li><button>Delete</button></li>
+          <li><button>Snooze</button></li>
+          <li><button>Mini view</button></li>
+        </menu>
+      </footer>
+    </div>
+
+    <!-- Later Tasks Column -->
+    <div>
+      <h2>My Day:</h2>
+      <div class="t-card">
+        <h3>Task 1</h3>
+        <p>Prepare the presentation slides.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 2</h3>
+        <p>Organize the team meeting.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 3</h3>
+        <p>Update the project roadmap.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 1</h3>
+        <p>Prepare the presentation slides.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 2</h3>
+        <p>Organize the team meeting.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 3</h3>
+        <p>Update the project roadmap.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 1</h3>
+        <p>Prepare the presentation slides.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 2</h3>
+        <p>Organize the team meeting.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 3</h3>
+        <p>Update the project roadmap.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 1</h3>
+        <p>Prepare the presentation slides.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 2</h3>
+        <p>Organize the team meeting.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 3</h3>
+        <p>Update the project roadmap.</p>
+      </div>
+    </div>
+
+    <!-- Unplanned tasks -->
+    <div>
+      <h2>Unprioritized:</h2>
+      <div class="t-card">
+        <h3>Task 1</h3>
+        <p>Prepare the presentation slides.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 2</h3>
+        <p>Organize the team meeting.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 3</h3>
+        <p>Update the project roadmap.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 1</h3>
+        <p>Prepare the presentation slides.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 2</h3>
+        <p>Organize the team meeting.</p>
+      </div>
+      <div class="t-card">
+        <h3>Task 3</h3>
+        <p>Update the project roadmap.</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <span>
+      This is just a demo of <a href="../index.html"
+        ><code>techstyle.css</code></a
+      >
+    </span>
+  </footer>
+</ExamplePage>

@@ -152,7 +152,7 @@ SOFTWARE.
     }
   }
 
-  body > :not(header, footer) {
+  body > :not(header, footer, .t-sidebyside) {
     width: 100%;
     /* Apply max-width everywhere (except some elements escape this - see "full width" snippets) */
     max-width: clamp(350px, 60vw, 700px);
