@@ -142,6 +142,7 @@ SOFTWARE.
     margin: 0;
     padding-inline: var(--t-spacing-around);
     line-height: 1.4;
+    text-align: center;
 
     /* when it's supported, add margin-trim: block */
     > :first-child {
@@ -150,6 +151,10 @@ SOFTWARE.
     > :last-child {
       margin-bottom: 0;
     }
+  }
+
+  p, pre, ul, ol {
+    text-align: initial;
   }
 
   body > :not(header, footer, .t-sidebyside) {
@@ -417,6 +422,7 @@ SOFTWARE.
       background: var(--t-color-bg);
       padding-inline: 2px;
       border-radius: 2px;
+      left: var(--t-spacing-within);
     }
   }
 
