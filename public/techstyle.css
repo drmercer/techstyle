@@ -425,6 +425,12 @@ SOFTWARE.
     padding: 0;
   }
 
+  [popover] menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   /* === layouts === */
 
   .t-sidebyside {
