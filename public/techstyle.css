@@ -416,6 +416,7 @@ SOFTWARE.
   dialog,
   [popover] {
     color: var(--t-color-fg);
+    background-color: var(--t-color-bg);
     border: 2px solid currentColor;
     border-radius: var(--t-spacing-within);
     padding: var(--t-spacing-within);
