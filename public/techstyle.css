@@ -276,6 +276,7 @@ SOFTWARE.
 
   /* Text inputs */
   /* (I wish there was a cleaner way to do this...) */
+  input:not([type]),
   input[type="text"],
   input[type="password"],
   input[type="email"],
@@ -461,6 +462,7 @@ SOFTWARE.
     /* Arrange contents side-by-side */
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: var(--t-spacing-around);
     flex-wrap: wrap;
 
