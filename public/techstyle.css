@@ -256,10 +256,10 @@ SOFTWARE.
   }
   /* animate buttons/selects when clicked */
   @media not (prefers-reduced-motion) {
-    button,
-    select {
+    button {
       /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
       /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
+      /* <select> elements can't do this either, for similar reasons - children are handled specially by the browser */
       border: var(--border-width) solid transparent;
       /* no tap highlight because :active takes care of that */
       -webkit-tap-highlight-color: transparent;
