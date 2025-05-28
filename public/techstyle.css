@@ -242,8 +242,13 @@ SOFTWARE.
     }
 
     @media (prefers-reduced-motion) {
-      &:active {
-        text-decoration: underline;
+      &:active, &:hover {
+        text-decoration: underline 2px;
+      }
+      @media (hover: hover) {
+        &:hover {
+          text-decoration: underline 2px;
+        }
       }
     }
   }
@@ -254,7 +259,7 @@ SOFTWARE.
       /* The real border is on a pseudoelement, which animates when clicked. That avoids changing the actual hit box of the button. */
       /* Sadly, can't do this on input[type=submit] because inputs aren't containers so pseudoelements don't work */
       border: var(--border-width) solid transparent;
-      /* no tab highlight because :active takes care of that */
+      /* no tap highlight because :active takes care of that */
       -webkit-tap-highlight-color: transparent;
 
       &::before {
@@ -267,10 +272,14 @@ SOFTWARE.
         border-color: currentColor;
         transition: scale 25ms ease-in;
       }
-      &:active::before {
-        scale: 0.92;
+      @media (hover: hover) {
+        &:hover::before {
+          scale: 1.05;
+        }
       }
-      /* TODO hover styles? */
+      &:active::before {
+        scale: 0.95;
+      }
     }
   }
 
@@ -345,12 +354,17 @@ SOFTWARE.
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
 
-    /* no tab highlight because :active takes care of that */
+
+    @media (hover: hover) {
+      &:hover:not(:active) {
+        text-decoration-thickness: 3px;
+      }
+    }
+    /* no tap highlight because :active takes care of that */
     -webkit-tap-highlight-color: transparent;
     &:active {
-      text-decoration-thickness: 3px;
+      text-decoration-thickness: 4px;
     }
-    /* TODO hover styles? */
   }
 
   iframe {
