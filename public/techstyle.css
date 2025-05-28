@@ -431,10 +431,18 @@ SOFTWARE.
     padding: 0;
   }
 
-  [popover] menu {
+  menu {
     list-style: none;
     margin: 0;
     padding: 0;
+
+    & > li:not(:last-child) {
+      margin-bottom: var(--t-spacing-within);
+    }
+
+    button {
+      width: 100%;
+    }
   }
 
   /* === layouts === */
