@@ -236,6 +236,8 @@ SOFTWARE.
     padding: var(--t-spacing-within) calc(2 * var(--t-spacing-within));
     cursor: pointer;
     position: relative;
+    /* disallows double-taps, making single taps dispatch immediately */
+    touch-action: manipulation;
 
     fieldset & + & {
       border-inline-start-width: 0;
