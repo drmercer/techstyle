@@ -379,11 +379,46 @@ SOFTWARE.
   [popover] {
     width: 300px;
     max-width: 80%;
-    background-color: var(--t-color-bg);
+
+    /* Thanks https://blog.logrocket.com/animating-dialog-popover-elements-css-starting-style/ */
+    transition: opacity 150ms, scale 150ms, translate 150ms,
+              overlay 150ms allow-discrete,
+              display 150ms allow-discrete;
+
+    /* destination styles when closing */
+    opacity: 0;
+    scale: 0.95;
+    translate: 0 -10px;
   }
   dialog::backdrop {
     background-color: var(--t-color-bg);
+    /* destination styles when closing */
+    opacity: 0;
+    transition: opacity 150ms,
+              overlay 150ms allow-discrete,
+              display 150ms allow-discrete;
+  }
+  /* the "real" styles */
+  dialog[open],
+  [popover]:popover-open {
+    opacity: 1;
+    scale: 1;
+    translate: 0;
+  }
+  dialog[open]::backdrop {
     opacity: 0.9;
+  }
+  /* the "animate from" styles when opening*/
+  @starting-style {
+    dialog[open],
+    [popover]:popover-open {
+      opacity: 0;
+      scale: 0.95;
+      translate: 0 -10px;
+    }
+    dialog[open]::backdrop {
+      opacity: 0;
+    }
   }
   @supports (position-area: bottom) {
     [popover] {
