@@ -160,8 +160,8 @@ import OgTags from "./_OgTags.astro";
         <footer>
           <div>
             <span>This is the footer</span>
-            <button popovertarget="demodialog">Open dialog</button>
-            <dialog id="demodialog" popover="auto">
+            <button id="open-dialog">Open dialog</button>
+            <dialog id="demodialog">
               <p>Hello, this is a dialog!</p>
               <form method="dialog">
                 <footer>
@@ -310,6 +310,15 @@ import OgTags from "./_OgTags.astro";
       `
           .trim()
           .replaceAll(/\n\s+\n/g, "\n"); // replace blank lines
+      }
+
+      // Dialog modal logic
+      const openDialogBtn = document.getElementById('open-dialog');
+      const demoDialog = document.getElementById('demodialog');
+      if (openDialogBtn && demoDialog) {
+        openDialogBtn.onclick = () => {
+          (demoDialog as HTMLDialogElement).showModal();
+        };
       }
     </script>
   </body>
