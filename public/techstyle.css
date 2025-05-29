@@ -129,7 +129,16 @@ SOFTWARE.
   .t-tinted {
     /* approximate conversion from oklch hue to hsl hue */
     --t-hue-hsl: calc(var(--t-hue) + 20);
-    filter: sepia(1) hue-rotate(calc(var(--t-hue-hsl) * 1deg - 97deg));
+    /*
+    when not swapped: sepia(1) hue-rotate(...) grayscale(0)
+    when swapped: sepia(0) hue-rotate(0deg) grayscale(1)
+    the pow() is a hack to make --t-swapped:0.5 work as expected
+    */
+    --hue-rotate: ;
+    filter:
+      sepia(calc(1 - var(--t-swapped)))
+      hue-rotate(calc((var(--t-hue-hsl) * 1deg - 97deg) *  (1 - pow(var(--t-swapped), 1000))))
+      grayscale(var(--t-swapped));
   }
 
   /* === base classless styles === */
