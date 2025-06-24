@@ -153,6 +153,11 @@ SOFTWARE.
     line-height: 1.4;
     text-align: center;
 
+    /* Apply guttering to the body (some elements escape this - see "full-width" snippets) */
+    width: 100%;
+    max-width: clamp(350px, 60vw, 700px);
+    margin-inline: auto;
+
     /* when it's supported, add margin-trim: block */
     > :first-child {
       margin-top: 0;
@@ -164,13 +169,6 @@ SOFTWARE.
 
   p, pre, ul, ol {
     text-align: initial;
-  }
-
-  body > :not(header, footer, .t-sidebyside) {
-    width: 100%;
-    /* Apply max-width everywhere (except some elements escape this - see "full width" snippets) */
-    max-width: clamp(350px, 60vw, 700px);
-    margin-inline: auto;
   }
 
   header,
