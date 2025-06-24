@@ -1,4 +1,4 @@
-This project is a demo website for a stylesheet I made called [`techstyle.css`](../public/techstyle.css).
+This project is a demo website for a stylesheet I made called [`techstyle.css`](../src/techstyle.css).
 
 About the stylesheet:
 * I use it for building hobby projects
