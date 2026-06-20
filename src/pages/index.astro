@@ -72,26 +72,6 @@ import OgTags from "./_OgTags.astro";
       </section>
 
       <section>
-        <h2>Side-by-side panels (if room)</h2>
-
-        <div class="t-sidebyside">
-          <section>
-            <h3>First panel</h3>
-            <div class="t-card">A card</div>
-          </section>
-          <section>
-            <h3>Second panel</h3>
-            <div class="t-card">Another card</div>
-          </section>
-          <section>
-            <h3>Third panel</h3>
-            <div class="t-card">One more card</div>
-            <div class="t-card">Another card</div>
-          </section>
-        </div>
-      </section>
-
-      <section>
         <h2>Cards and form elements</h2>
         <form
           class="t-card"
@@ -124,76 +104,28 @@ import OgTags from "./_OgTags.astro";
     </main>
 
     <section>
-      <h2>A full-page section</h2>
-
-      <section class="t-fullheight">
-        <div class="t-card">
-          <p>A vertically centered card in the full-page section</p>
-          <p>
-            Themed emojis: <span class="t-tinted">😎 🌳 🦖</span>
-          </p>
+      <h2>Dialogs and Popovers</h2>
+      <div class="t-card">
+        <button popovertarget="demopopover">Open popover</button>
+        <div popover id="demopopover">
+          This is a popover
+          <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+          </ul>
         </div>
-      </section>
-    </section>
-
-    <section>
-      <h2>A full-page section with header and footer</h2>
-
-      <section class="t-fullheight">
-        <header>
-          <span>This is the header</span>
-          <div>
-            <button popovertarget="demopopover">Open popover</button>
-            <div popover id="demopopover">
-              This is a popover
-              <ul>
-                <li>One</li>
-                <li>Two</li>
-                <li>Three</li>
-              </ul>
-            </div>
-          </div>
-        </header>
-        <div class="t-card">
-          A vertically centered card in the full-page section
-        </div>
-        <footer>
-          <div>
-            <span>This is the footer</span>
-            <button id="open-dialog">Open dialog</button>
-            <dialog id="demodialog">
-              <p>Hello, this is a dialog!</p>
-              <form method="dialog">
-                <footer>
-                  <button autofocus type="submit">Cancel</button>
-                  <button type="submit">Ok</button>
-                </footer>
-              </form>
-            </dialog>
-          </div>
-        </footer>
-      </section>
-    </section>
-
-    <section>
-      <h2>Example application screens</h2>
-
-      <ul>
-        <li>
-          <a href="./examples/landing">A landing page for a cool app</a>
-        </li>
-        <li>
-          <a href="./examples/popover">Popovers in various places</a>
-        </li>
-        <li>
-          <a href="./examples/monotask">A monotasking app</a>
-        </li>
-        <li>
-          <a href="./examples/monotask-planning"
-            >A monotasking app (planning view)</a
-          >
-        </li>
-      </ul>
+        <button id="open-dialog">Open dialog</button>
+        <dialog id="demodialog">
+          <p>Hello, this is a dialog!</p>
+          <form method="dialog">
+            <footer>
+              <button autofocus type="submit">Cancel</button>
+              <button type="submit">Ok</button>
+            </footer>
+          </form>
+        </dialog>
+      </div>
     </section>
 
     <div>

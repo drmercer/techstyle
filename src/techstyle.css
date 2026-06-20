@@ -93,35 +93,7 @@ SOFTWARE.
     hyphens: auto;
     box-decoration-break: clone;
 
-    --t-scrollbar-width: calc(2 * var(--t-spacing-within));
-    /* prevents headers/footers from causing horizontal scroll */
-    overflow-x: clip;
-    scroll-behavior: smooth;
-
-    /* 100vw includes the scrollbar width, so we have to subtract it to compute the real viewport width. Plus we have overflow-x:clip just in case. */
-    --t-viewport-width: calc(100vw - var(--t-scrollbar-width));
-
     color-scheme: light dark;
-  }
-
-  /* scrollbar styles */
-  body::-webkit-scrollbar {
-    width: var(--t-scrollbar-width);
-  }
-  body::-webkit-scrollbar-thumb {
-    background: var(--t-color-fg);
-    border-radius: 4px;
-    border: 2px solid var(--t-color-bg);
-  }
-  body::-webkit-scrollbar-track {
-    background: var(--t-color-bg);
-  }
-  @supports not selector(::-webkit-scrollbar) {
-    :root {
-      /* for header width calculations */
-      --t-scrollbar-width: 0;
-      scrollbar-color: var(--t-color-fg) var(--t-color-bg);
-    }
   }
 
   /* add your hue to any element! iframes, emojis, you name it!*/
@@ -149,14 +121,7 @@ SOFTWARE.
 
   body {
     margin: 0;
-    padding-inline: var(--t-spacing-around);
     line-height: 1.4;
-    text-align: center;
-
-    /* Apply guttering to the body (some elements escape this - see "full-width" snippets) */
-    width: 100%;
-    max-width: clamp(350px, 60vw, 700px);
-    margin-inline: auto;
 
     /* when it's supported, add margin-trim: block */
     > :first-child {
@@ -167,41 +132,6 @@ SOFTWARE.
     }
   }
 
-  p, pre, ul, ol {
-    text-align: initial;
-  }
-
-  header,
-  footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-
-    /* Make footers/headers full-page, unless they have a container */
-    &:not(.t-sidebyside *, .t-card *, dialog *) {
-      /* Full-width (.t-sidebyside also does this) */
-      width: max(var(--t-viewport-width), 100%);
-      position: relative;
-      left: calc((var(--t-viewport-width) - 100%) * -0.5);
-      /* used to use transform/translate here, but it breaks popover positioning */
-
-      padding: var(--t-spacing-around) calc(2 * var(--t-spacing-around));
-    }
-
-    /* center an only child */
-    &:has(> :only-child) {
-      justify-content: center;
-    }
-  }
-
-  form,
-  p,
-  hr {
-    margin-block: var(--t-spacing-around);
-  }
-
   hr {
     border: none;
     border-bottom: 2px solid currentColor;
@@ -209,14 +139,6 @@ SOFTWARE.
 
   pre {
     white-space: pre-wrap;
-  }
-
-  /* sections have margin when they have siblings */
-  * + section {
-    margin-top: calc(2 * var(--t-spacing-around));
-  }
-  section:has(+ *) {
-    margin-bottom: calc(2 * var(--t-spacing-around));
   }
 
   /* === form elements === */
@@ -503,54 +425,6 @@ SOFTWARE.
 
     button {
       width: 100%;
-    }
-  }
-
-  /* === layouts === */
-
-  .t-sidebyside {
-    margin: var(--t-spacing-around) 0;
-
-    /* Full-width (headers and footers also do this) */
-    width: max(var(--t-viewport-width), 100%);
-    position: relative;
-    left: calc((var(--t-viewport-width) - 100%) * -0.5);
-    /* used to use transform/translate here, but it breaks popover positioning */
-
-    padding-inline: var(--t-spacing-around);
-
-    /* Arrange contents side-by-side */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--t-spacing-around);
-    flex-wrap: wrap;
-
-    & > * {
-      max-width: clamp(350px, 60vw, 500px);
-      margin: 0; /* no margin because gap takes care of it */
-      flex: 1 1 350px;
-    }
-  }
-
-  .t-fullheight {
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    /* If no header, put a pseudoelement in that spot in the flex arrangement */
-    &:not(:has(> header:first-child))::before {
-      content: "\200b";
-      width: 0;
-      height: 0;
-    }
-
-    /* If no footer, put a pseudoelement in that spot in the flex arrangement */
-    &:not(:has(> footer:last-child))::after {
-      content: "\200b";
-      width: 0;
-      height: 0;
     }
   }
 }
