@@ -93,7 +93,35 @@ SOFTWARE.
     hyphens: auto;
     box-decoration-break: clone;
 
+    --t-scrollbar-width: calc(2 * var(--t-spacing-within));
+    /* prevents headers/footers from causing horizontal scroll */
+    overflow-x: clip;
+    scroll-behavior: smooth;
+
+    /* 100vw includes the scrollbar width, so we have to subtract it to compute the real viewport width. Plus we have overflow-x:clip just in case. */
+    --t-viewport-width: calc(100vw - var(--t-scrollbar-width));
+
     color-scheme: light dark;
+  }
+
+  /* scrollbar styles */
+  body::-webkit-scrollbar {
+    width: var(--t-scrollbar-width);
+  }
+  body::-webkit-scrollbar-thumb {
+    background: var(--t-color-fg);
+    border-radius: 4px;
+    border: 2px solid var(--t-color-bg);
+  }
+  body::-webkit-scrollbar-track {
+    background: var(--t-color-bg);
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    :root {
+      /* for header width calculations */
+      --t-scrollbar-width: 0;
+      scrollbar-color: var(--t-color-fg) var(--t-color-bg);
+    }
   }
 
   /* add your hue to any element! iframes, emojis, you name it!*/
