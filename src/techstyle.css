@@ -144,6 +144,7 @@ SOFTWARE.
   body {
     margin: 0;
     line-height: 1.4;
+    padding: var(--t-spacing-around);
 
     /* when it's supported, add margin-trim: block */
     > :first-child {
